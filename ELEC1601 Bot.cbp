@@ -43,23 +43,22 @@
 			<Add option="-lmingw32 -lSDL2main -lSDL2" />
 			<Add directory="../os/windows/lib" />
 		</Linker>
-		<Unit filename="ELEC1601 Bot.layout" />
-		<Unit filename="formulas.c">
+		<Unit filename="src/formulas.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="formulas.h" />
-		<Unit filename="main.c">
+		<Unit filename="src/formulas.h" />
+		<Unit filename="src/main.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="robot.c">
+		<Unit filename="src/robot.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="robot.h" />
-		<Unit filename="structures.h" />
-		<Unit filename="wall.c">
+		<Unit filename="src/robot.h" />
+		<Unit filename="src/structures.h" />
+		<Unit filename="src/wall.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="wall.h" />
+		<Unit filename="src/wall.h" />
 		<Extensions>
 			<lib_finder disable_auto="1" />
 		</Extensions>

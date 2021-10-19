@@ -1,25 +1,8 @@
 #include "stdio.h"
 #include "stdlib.h"
+#include "sdl.h"
+#include "SDL2_gfxPrimitives.h"
 #include "time.h"
-
-// Conditional compilation directives to ensure the right "include" path for Windows or Unix is used, as well as clock calculation
-#ifdef _WIN32
-    #include "include\SDL2\SDL.h"
-    #include "SDL2_gfx\SDL2_gfxPrimitives.h"
-    #define CLOCK_CALCULATION   1000 / CLOCKS_PER_SEC
-#else
-    #include "SDL2/SDL.h"
-    #include "SDL2/SDL2_gfxPrimitives.h"
-
-    #ifdef __linux__
-        // Use Linux method of calclating clock from https://edstem.org/au/courses/6697/discussion/634345
-        #include "unistd.h"
-        #define CLOCK_CALCULATION   10 / sysconf(_SC_CLK_TCK)
-    #else
-        // macOS calulates clock with same formula as Windows
-        #define CLOCK_CALCULATION   1000 / CLOCKS_PER_SEC
-    #endif
-#endif
 
 #include "formulas.h"
 #include "wall.h"
@@ -80,7 +63,7 @@ int main(int argc, char *argv[]) {
         //Check if robot reaches endpoint. and check sensor values
         if (checkRobotReachedEnd(&robot, OVERALL_WINDOW_WIDTH, OVERALL_WINDOW_HEIGHT/2+100, 10, 100)){
             end_time = clock();
-            msec = (end_time-start_time) * CLOCK_CALCULATION;
+            msec = (end_time-start_time) * 1000 / CLOCKS_PER_SEC;
             robotSuccess(&robot, msec);
         }
         else if(checkRobotHitWalls(&robot, head))
