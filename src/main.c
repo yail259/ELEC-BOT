@@ -1,6 +1,7 @@
 #include "stdio.h"
 #include "stdlib.h"
 #include "sdl.h"
+#include <SDL.h>
 #include "SDL2_gfxPrimitives.h"
 #include "time.h"
 
@@ -13,13 +14,49 @@ int done = 0;
 
 int main(int argc, char *argv[]) {
     SDL_Window *window;
+    SDL_Window *windowWelcome;
     SDL_Renderer *renderer;
 
     if(SDL_Init(SDL_INIT_VIDEO) < 0){
         return 1;
     }
 
-    window = SDL_CreateWindow("Robot Maze", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, OVERALL_WINDOW_WIDTH, OVERALL_WINDOW_HEIGHT, SDL_WINDOW_OPENGL);
+    //Welcome Screen
+    SDL_Window * welcome = SDL_CreateWindow("Welcome Screen",
+    SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 640, 480, 0);
+
+    SDL_Renderer *renderer2 = SDL_CreateRenderer(welcome, -1, 0);
+
+    SDL_Surface *image = SDL_LoadBMP("startscreen.bmp");
+
+    SDL_Texture *texture = SDL_CreateTextureFromSurface(renderer2, image);
+    SDL_RenderCopy(renderer2, texture, NULL, NULL);
+    SDL_RenderPresent(renderer2);
+
+    SDL_bool start = SDL_FALSE;
+    SDL_Event ev;
+
+    while(start == SDL_FALSE){
+        while(SDL_PollEvent(&ev)){
+            const Uint8 *input = SDL_GetKeyboardState(NULL);
+            if(ev.type == SDL_QUIT){
+                done = 1;
+            }
+            if(input[SDL_SCANCODE_SPACE]){
+
+
+                SDL_DestroyTexture(texture);
+                SDL_FreeSurface(image);
+                SDL_DestroyRenderer(renderer2);
+                SDL_DestroyWindow(welcome);
+
+                start = SDL_TRUE;
+            }
+        }
+    }
+
+
+    //Actual Game Screen
     window = SDL_CreateWindow("Robot Maze", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, OVERALL_WINDOW_WIDTH, OVERALL_WINDOW_HEIGHT, SDL_WINDOW_OPENGL);
     renderer = SDL_CreateRenderer(window, -1, 0);
 
@@ -52,7 +89,8 @@ int main(int argc, char *argv[]) {
 
     SDL_Event event;
     while(!done){
-        SDL_SetRenderDrawColor(renderer, 200, 200, 200, 255);
+        //set background colour
+        SDL_SetRenderDrawColor(renderer, 97, 97, 97, 255);
         SDL_RenderClear(renderer);
 
         //Move robot based on user input commands/auto commands
