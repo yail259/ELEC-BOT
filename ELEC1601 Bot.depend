@@ -880,10 +880,11 @@
 1633999573 c:\users\yail\onedrive\assignments\2021_s2\elec-bot\src\formulas.h
 	"math.h"
 
-1633999573 source:c:\users\yail\onedrive\assignments\2021_s2\elec-bot\src\main.c
+1634881053 source:c:\users\yail\onedrive\assignments\2021_s2\elec-bot\src\main.c
 	"stdio.h"
 	"stdlib.h"
 	"sdl.h"
+	<SDL.h>
 	"SDL2_gfxPrimitives.h"
 	"time.h"
 	"formulas.h"
@@ -909,10 +910,10 @@
 	"wall.h"
 	"math.h"
 
-1633999573 source:c:\users\yail\onedrive\assignments\2021_s2\elec-bot\src\robot.c
+1634881053 source:c:\users\yail\onedrive\assignments\2021_s2\elec-bot\src\robot.c
 	"robot.h"
 
-1633999574 source:c:\users\yail\onedrive\assignments\2021_s2\elec-bot\src\wall.c
+1634881053 source:c:\users\yail\onedrive\assignments\2021_s2\elec-bot\src\wall.c
 	"wall.h"
 
 1628614477 c:\users\yail\onedrive\assignments\2021_s2\elec-bot\ming_dev_lib\include\sdl2\sdl.h
