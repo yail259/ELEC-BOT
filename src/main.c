@@ -62,7 +62,7 @@ int main(int argc, char *argv[]) {
 
     struct Robot robot;
     struct Wall_collection *head = NULL;
-    int front_left_sensor, front_right_sensor=0;
+    int front_left_sensor, front_right_sensor, front_sensor =0;
     clock_t start_time, end_time;
     int msec;
 
@@ -85,6 +85,9 @@ int main(int argc, char *argv[]) {
     insertAndSetFirstWall(&head, 12,  OVERALL_WINDOW_WIDTH/2+200, OVERALL_WINDOW_HEIGHT/2+100, OVERALL_WINDOW_WIDTH/2-100, 10);
 
     setup_robot(&robot);
+    robot.prev_left = checkRobotSensorFrontLeftAllWalls(&robot, head);
+    robot.prev_right = checkRobotSensorFrontRightAllWalls(&robot, head);
+
     updateAllWalls(head, renderer);
 
     SDL_Event event;
@@ -95,7 +98,7 @@ int main(int argc, char *argv[]) {
 
         //Move robot based on user input commands/auto commands
         if (robot.auto_mode == 1)
-            robotAutoMotorMove(&robot, front_left_sensor, front_right_sensor);
+            robotAutoMotorMove(&robot, front_left_sensor, front_right_sensor, front_sensor);
         robotMotorMove(&robot);
 
         //Check if robot reaches endpoint. and check sensor values
@@ -115,6 +118,11 @@ int main(int argc, char *argv[]) {
             front_right_sensor = checkRobotSensorFrontRightAllWalls(&robot, head);
             if (front_right_sensor>0)
                 printf("Getting close on the right. Score = %d\n", front_right_sensor);
+
+            front_sensor = checkRobotSensorFront(&robot, head);
+            if (front_sensor>0)
+                printf("Getting close on the front. Score = %d\n", front_sensor);
+
         }
         robotUpdate(renderer, &robot);
         updateAllWalls(head, renderer);

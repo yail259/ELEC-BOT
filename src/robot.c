@@ -12,6 +12,12 @@ void setup_robot(struct Robot *robot){
     robot->currentSpeed = 0;
     robot->crashed = 0;
     robot->auto_mode = 0;
+    robot->prev_left = 0;
+    robot->prev_right = 0;
+    robot->turn_degrees = 0;
+    robot->turn_speed = 0;
+    robot->turns = 0;
+    robot->time_after_finish_turn = 0;
 
     printf("Press arrow keys to move manually, or enter to move automatically\n\n");
 }
@@ -96,7 +102,7 @@ int checkRobotSensorFrontRightAllWalls(struct Robot * robot, struct Wall_collect
     {
         ptr = head_store;
         xDir = round(robotCentreX+(ROBOT_WIDTH/2-2)*cos((robot->angle + 90)*PI/180)-(-ROBOT_HEIGHT/2-SENSOR_VISION+sensorSensitivityLength*i)*sin((robot->angle + 90)*PI/180));
-        yDir = round(robotCentreY-ROBOT_HEIGHT/2+(ROBOT_WIDTH/2-2)*sin((robot->angle + 90)*PI/180)+(-ROBOT_HEIGHT/2-SENSOR_VISION+sensorSensitivityLength*i)*cos((robot->angle + 90)*PI/180));
+        yDir = round(robotCentreY+(ROBOT_WIDTH/2-2)*sin((robot->angle + 90)*PI/180)+(-ROBOT_HEIGHT/2-SENSOR_VISION+sensorSensitivityLength*i)*cos((robot->angle + 90)*PI/180));
         xTL = (int) xDir;
         yTL = (int) yDir;
         hit = 0;
@@ -129,7 +135,7 @@ int checkRobotSensorFrontLeftAllWalls(struct Robot * robot, struct Wall_collecti
     {
         ptr = head_store;
         xDir = round(robotCentreX+(-ROBOT_WIDTH/2)*cos((robot->angle - 90)*PI/180)-(-ROBOT_HEIGHT/2-SENSOR_VISION+sensorSensitivityLength*i)*sin((robot->angle - 90)*PI/180));
-        yDir = round(robotCentreY - ROBOT_HEIGHT/2 +(-ROBOT_WIDTH/2)*sin((robot->angle - 90)*PI/180)+(-ROBOT_HEIGHT/2-SENSOR_VISION+sensorSensitivityLength*i)*cos((robot->angle - 90)*PI/180));
+        yDir = round(robotCentreY +(-ROBOT_WIDTH/2)*sin((robot->angle - 90)*PI/180)+(-ROBOT_HEIGHT/2-SENSOR_VISION+sensorSensitivityLength*i)*cos((robot->angle - 90)*PI/180));
         xTL = (int) xDir;
         yTL = (int) yDir;
         hit = 0;
@@ -237,7 +243,7 @@ void robotUpdate(struct SDL_Renderer * renderer, struct Robot * robot){
     for (i = 0; i < SENSOR_VISION; i++)
     {
         xDir = round(robotCentreX+(ROBOT_WIDTH/2-2)*cos((robot->angle + 90)*PI/180)-(-ROBOT_HEIGHT/2-SENSOR_VISION+sensor_sensitivity*i)*sin((robot->angle + 90)*PI/180));
-        yDir = round(robotCentreY-ROBOT_HEIGHT/2+(ROBOT_WIDTH/2-2)*sin((robot->angle + 90)*PI/180)+(-ROBOT_HEIGHT/2-SENSOR_VISION+sensor_sensitivity*i)*cos((robot->angle + 90)*PI/180));
+        yDir = round(robotCentreY+(ROBOT_WIDTH/2-2)*sin((robot->angle + 90)*PI/180)+(-ROBOT_HEIGHT/2-SENSOR_VISION+sensor_sensitivity*i)*cos((robot->angle + 90)*PI/180));
         xTL = (int) xDir;
         yTL = (int) yDir;
 
@@ -251,7 +257,7 @@ void robotUpdate(struct SDL_Renderer * renderer, struct Robot * robot){
     for (i = 0; i < SENSOR_VISION; i++)
     {
         xDir = round(robotCentreX+(-ROBOT_WIDTH/2)*cos((robot->angle - 90)*PI/180)-(-ROBOT_HEIGHT/2-SENSOR_VISION+sensor_sensitivity*i)*sin((robot->angle - 90)*PI/180));
-        yDir = round(robotCentreY-ROBOT_HEIGHT/2+(-ROBOT_WIDTH/2)*sin((robot->angle - 90)*PI/180)+(-ROBOT_HEIGHT/2-SENSOR_VISION+sensor_sensitivity*i)*cos((robot->angle - 90)*PI/180));
+        yDir = round(robotCentreY+(-ROBOT_WIDTH/2)*sin((robot->angle - 90)*PI/180)+(-ROBOT_HEIGHT/2-SENSOR_VISION+sensor_sensitivity*i)*cos((robot->angle - 90)*PI/180));
         xTL = (int) xDir;
         yTL = (int) yDir;
 
@@ -264,7 +270,7 @@ void robotUpdate(struct SDL_Renderer * renderer, struct Robot * robot){
     //Front Sensor
     for (i = 0; i < SENSOR_VISION; i++)
     {
-        xDir = round(ROBOT_WIDTH/2 + robotCentreX+(-ROBOT_WIDTH/2)*cos((robot->angle)*PI/180)-(-ROBOT_HEIGHT/2-SENSOR_VISION+sensor_sensitivity*i)*sin((robot->angle)*PI/180));
+        xDir = round(robotCentreX+(-ROBOT_WIDTH/2)*cos((robot->angle)*PI/180)-(-ROBOT_HEIGHT/2-SENSOR_VISION+sensor_sensitivity*i)*sin((robot->angle)*PI/180));
         yDir = round(robotCentreY+(-ROBOT_WIDTH/2)*sin((robot->angle)*PI/180)+(-ROBOT_HEIGHT/2-SENSOR_VISION+sensor_sensitivity*i)*cos((robot->angle)*PI/180));
         xTL = (int) xDir;
         yTL = (int) yDir;
@@ -312,22 +318,82 @@ void robotMotorMove(struct Robot * robot) {
     robot->y = (int) y_offset;
 }
 
-void robotAutoMotorMove(struct Robot * robot, int front_left_sensor, int front_right_sensor) {
-
-    if ((front_left_sensor == 0) && (front_right_sensor == 0)) {
-        if (robot->currentSpeed<2)
-            robot->direction = UP;
-    }
-    else if ((robot->currentSpeed>0) && ((front_left_sensor == 1) || (front_right_sensor == 1)) ) {
-        robot->direction = DOWN;
-    }
-    else if ((robot->currentSpeed==0) && ((front_left_sensor == 1) || (front_right_sensor == 1)) ) {
+void robotAutoMotorMove(struct Robot * robot, int front_left_sensor, int front_right_sensor, int front_sensor) {
+    // in a straight line
+    /*
+    if ( front_right_sensor < 10 && changeRight < 0) {
+        printf("turning left!!!");
         robot->direction = LEFT;
     }
-    else if ((robot->currentSpeed==0) && ((front_left_sensor == 1) || (front_right_sensor == 0)) ) {
+    else if (front_left_sensor < 10 && changeLeft < 0) {
+        printf("turning right!!!");
         robot->direction = RIGHT;
     }
-    else if ((robot->currentSpeed==0) && ((front_left_sensor == 0) || (front_right_sensor == 1)) ) {
-        robot->direction = RIGHT;
+    */
+    int soft_limit = 5;
+
+    if (robot->time_after_finish_turn != 0) {
+        robot->time_after_finish_turn -= 1;
+        return;
+
     }
+
+    if (front_sensor > 70 && robot->currentSpeed < soft_limit) {
+        robot->direction = UP;
+        return;
+    }
+
+    if (robot->turn_degrees > 0) {
+
+        if (robot->turns % 1 == 0) {
+            robot->direction = RIGHT;
+            robot->turn_degrees -= DEFAULT_ANGLE_CHANGE;
+        } else if (robot->currentSpeed < soft_limit) {
+            robot->direction = UP;
+        }
+        if (robot->turn_degrees ==  0) {
+            robot->time_after_finish_turn = 10;
+        }
+        robot->turns += 1;
+        return;
+    }
+    else if (robot->turn_degrees < 0) {
+
+        if (robot->turns % 1 == 0) {
+            robot->direction = LEFT;
+            robot->turn_degrees += DEFAULT_ANGLE_CHANGE;
+        } else if (robot->currentSpeed < soft_limit) {
+            robot->direction = UP;
+        }
+
+        if (robot->turn_degrees ==  0) {
+            robot->time_after_finish_turn = 10;
+        }
+        robot->turns += 1;
+        return;
+    }
+
+    int changeLeft = (front_left_sensor - robot->prev_left);
+    int changeRight = (front_right_sensor - robot->prev_right);
+
+    printf("The change in left is %d\n", changeLeft);
+    printf("The change in right is %d\n", changeRight);
+
+    // at an intersection
+    if (changeLeft > 30 || front_left_sensor == 0) {
+        printf("turning left!!!");
+        robot->turns = 0;
+        robot->turn_degrees = -90;
+        // the close the robot is to the wall in front, the faster the turn speed
+        robot->turn_speed = front_sensor/50;
+    }
+    else if (changeRight > 30 || front_right_sensor == 0) {
+        printf("turning right!!!");
+        robot->turns = 0;
+        robot->turn_degrees = 90;
+        robot->turn_speed = front_sensor/50;
+    }
+
+    robot->prev_left = front_left_sensor;
+    robot->prev_right = front_right_sensor;
 }
