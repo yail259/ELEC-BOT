@@ -95,7 +95,6 @@ int checkRobotSensorLidarAllWalls(struct Robot * robot, struct Wall_collection *
 
     for (i = 0; i < 5; i++)
     {
-<<<<<<< Updated upstream
         ptr = head_store;
         xDir = round(robotCentreX+(ROBOT_WIDTH/2-2)*cos((robot->angle)*PI/180)-(-ROBOT_HEIGHT/2-SENSOR_VISION+sensorSensitivityLength*i)*sin((robot->angle)*PI/180));
         yDir = round(robotCentreY+(ROBOT_WIDTH/2-2)*sin((robot->angle)*PI/180)+(-ROBOT_HEIGHT/2-SENSOR_VISION+sensorSensitivityLength*i)*cos((robot->angle)*PI/180));
@@ -139,7 +138,7 @@ int checkRobotSensorFrontLeftAllWalls(struct Robot * robot, struct Wall_collecti
         while(ptr != NULL) {
             hit = (hit || checkRobotSensor(xTL, yTL, sensorSensitivityLength, &ptr->wall));
             ptr = ptr->next;
-=======
+
         for (j = 0; j < 360; j++)
         {
             ptr = head_store;
