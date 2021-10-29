@@ -330,7 +330,7 @@ void robotAutoMotorMove(struct Robot * robot, int front_left_sensor, int front_r
         robot->direction = RIGHT;
     }
     */
-    int soft_limit = 5;
+    int soft_limit = 10;
 
     if (robot->time_after_finish_turn != 0) {
         robot->time_after_finish_turn -= 1;
@@ -338,7 +338,7 @@ void robotAutoMotorMove(struct Robot * robot, int front_left_sensor, int front_r
 
     }
 
-    if (front_sensor > 70 && robot->currentSpeed < soft_limit) {
+    if (front_sensor > 80 && robot->currentSpeed < soft_limit) {
         robot->direction = UP;
         return;
     }
