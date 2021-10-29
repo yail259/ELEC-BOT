@@ -78,9 +78,10 @@ int checkRobotSensor(int x, int y, int sensorSensitivityLength, struct Wall * wa
     return overlap;
 }
 
-int checkRobotSensorFrontRightAllWalls(struct Robot * robot, struct Wall_collection * head) {
+int checkRobotSensorLidarAllWalls(struct Robot * robot, struct Wall_collection * head) {
     struct Wall_collection *ptr, *head_store;
     int i;
+    int j;
     double xDir, yDir;
     int robotCentreX, robotCentreY, xTL, yTL;
     int score, hit;
@@ -94,6 +95,7 @@ int checkRobotSensorFrontRightAllWalls(struct Robot * robot, struct Wall_collect
 
     for (i = 0; i < 5; i++)
     {
+<<<<<<< Updated upstream
         ptr = head_store;
         xDir = round(robotCentreX+(ROBOT_WIDTH/2-2)*cos((robot->angle)*PI/180)-(-ROBOT_HEIGHT/2-SENSOR_VISION+sensorSensitivityLength*i)*sin((robot->angle)*PI/180));
         yDir = round(robotCentreY+(ROBOT_WIDTH/2-2)*sin((robot->angle)*PI/180)+(-ROBOT_HEIGHT/2-SENSOR_VISION+sensorSensitivityLength*i)*cos((robot->angle)*PI/180));
@@ -137,9 +139,27 @@ int checkRobotSensorFrontLeftAllWalls(struct Robot * robot, struct Wall_collecti
         while(ptr != NULL) {
             hit = (hit || checkRobotSensor(xTL, yTL, sensorSensitivityLength, &ptr->wall));
             ptr = ptr->next;
+=======
+        for (j = 0; j < 360; j++)
+        {
+            ptr = head_store;
+            xDir = round(robotCentreX+(ROBOT_WIDTH/2-2)*cos((robot->angle + j)*PI/180)-
+                         (-ROBOT_HEIGHT/2-SENSOR_VISION+sensorSensitivityLength*i)*sin((robot->angle + j)*PI/180));
+            yDir = round(robotCentreY+(ROBOT_WIDTH/2-2)*sin((robot->angle + j)*PI/180)+
+                         (-ROBOT_HEIGHT/2-SENSOR_VISION+sensorSensitivityLength*i)*cos((robot->angle + j)*PI/180));
+            xTL = (int) xDir;
+            yTL = (int) yDir;
+            hit = 0;
+
+            while(ptr != NULL) {
+                hit = (hit || checkRobotSensor(xTL, yTL, sensorSensitivityLength, &ptr->wall));
+                ptr = ptr->next;
+            }
+            if (hit)
+                score = i;
+
+>>>>>>> Stashed changes
         }
-        if (hit)
-            score = i;
     }
     return score;
 }
@@ -197,7 +217,15 @@ void robotUpdate(struct SDL_Renderer * renderer, struct Robot * robot){
     SDL_RenderDrawLine(renderer,xBR, yBR, xBL, yBL);
     SDL_RenderDrawLine(renderer,xBL, yBL, xTL, yTL);
     SDL_RenderDrawLine(renderer,xTL, yTL, xTR, yTR);
+}
 
+void lidarUpdate(struct SDL_Renderer * renderer, struct Robot * robot)
+{
+    double xDir, yDir;
+    int robotCentreX, robotCentreY, xTR, yTR, xTL, yTL, xBR, yBR, xBL, yBL;
+    SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);
+
+<<<<<<< Updated upstream
     //Front Right Sensor
     int sensor_sensitivity =  floor(SENSOR_VISION/5);
     int i;
@@ -226,6 +254,29 @@ void robotUpdate(struct SDL_Renderer * renderer, struct Robot * robot){
         SDL_SetRenderDrawColor(renderer, 80+(20*(5-i)), 80+(20*(5-i)), 80+(20*(5-i)), 255);
         SDL_RenderDrawRect(renderer, &rect);
         SDL_RenderFillRect(renderer, &rect);
+=======
+    robotCentreX = robot->x+ROBOT_WIDTH/2;
+    robotCentreY = robot->y+ROBOT_HEIGHT/2;
+    //Spinning LiDARSensor
+    int sensor_sensitivity =  floor(SENSOR_VISION/SENSOR_VISION);
+    int i;
+    int j;
+    for (i = 0; i < SENSOR_VISION; i++)
+    {
+        for(j =0; j < 360; j++)
+        {
+            xDir = round(robotCentreX+(ROBOT_WIDTH/2-2)*cos((robot->angle + j)*PI/180)-(-ROBOT_HEIGHT/2-SENSOR_VISION+sensor_sensitivity*i)*sin((robot->angle + j)*PI/180));
+            yDir = round(robotCentreY+(ROBOT_WIDTH/2-2)*sin((robot->angle + j)*PI/180)+(-ROBOT_HEIGHT/2-SENSOR_VISION+sensor_sensitivity*i)*cos((robot->angle + j)*PI/180));
+            xTL = (int) xDir;
+            yTL = (int) yDir;
+
+            //change 2 change width of sensor.
+            SDL_Rect rect = {xTL, yTL, 2, sensor_sensitivity};
+            SDL_SetRenderDrawColor(renderer, 80+(20*(SENSOR_VISION-i)), 80+(20*(SENSOR_VISION-i)), 80+(20*(SENSOR_VISION-i)), 255);
+            SDL_RenderDrawRect(renderer, &rect);
+            SDL_RenderFillRect(renderer, &rect);
+        }
+>>>>>>> Stashed changes
     }
 }
 
