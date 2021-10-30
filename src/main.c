@@ -19,13 +19,21 @@ int main(int argc, char *argv[]) {
         return 1;
     }
 
-    window = SDL_CreateWindow("Robot Maze", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, OVERALL_WINDOW_WIDTH, OVERALL_WINDOW_HEIGHT, SDL_WINDOW_OPENGL);
+
     window = SDL_CreateWindow("Robot Maze", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, OVERALL_WINDOW_WIDTH, OVERALL_WINDOW_HEIGHT, SDL_WINDOW_OPENGL);
     renderer = SDL_CreateRenderer(window, -1, 0);
 
+    SDL_Window *window2 = SDL_CreateWindow("Robot Vision", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, OVERALL_WINDOW_WIDTH, OVERALL_WINDOW_HEIGHT, SDL_WINDOW_OPENGL);
+    SDL_Renderer *renderer2 = SDL_CreateRenderer(window2, -1, 0);
+
+    SDL_Rect rect = {20, 20, 2, 1};
+    SDL_SetRenderDrawColor(renderer2, 80+(20*(5)), 80+(20*(5)), 80+(20*(5)), 0);
+    SDL_RenderDrawRect(renderer2, &rect);
+    SDL_RenderFillRect(renderer2, &rect);
+
     struct Robot robot;
     struct Wall_collection *head = NULL;
-    int front_left_sensor, front_right_sensor, lidar_sensor=0;
+    int front_left_sensor, front_right_sensor=0;
     clock_t start_time, end_time;
     int msec;
 
@@ -50,10 +58,30 @@ int main(int argc, char *argv[]) {
     setup_robot(&robot);
     updateAllWalls(head, renderer);
 
+    insertAndSetFirstWall(&head, 1,  OVERALL_WINDOW_WIDTH/2, OVERALL_WINDOW_HEIGHT/2, 10, OVERALL_WINDOW_HEIGHT/2);
+    insertAndSetFirstWall(&head, 2,  OVERALL_WINDOW_WIDTH/2-100, OVERALL_WINDOW_HEIGHT/2+100, 10, OVERALL_WINDOW_HEIGHT/2-100);
+    insertAndSetFirstWall(&head, 3,  OVERALL_WINDOW_WIDTH/2-250, OVERALL_WINDOW_HEIGHT/2+100, 150, 10);
+    insertAndSetFirstWall(&head, 4,  OVERALL_WINDOW_WIDTH/2-150, OVERALL_WINDOW_HEIGHT/2, 150, 10);
+    insertAndSetFirstWall(&head, 5,  OVERALL_WINDOW_WIDTH/2-250, OVERALL_WINDOW_HEIGHT/2-200, 10, 300);
+    insertAndSetFirstWall(&head, 6,  OVERALL_WINDOW_WIDTH/2-150, OVERALL_WINDOW_HEIGHT/2-100, 10, 100);
+    insertAndSetFirstWall(&head, 7,  OVERALL_WINDOW_WIDTH/2-250, OVERALL_WINDOW_HEIGHT/2-200, 450, 10);
+    insertAndSetFirstWall(&head, 8,  OVERALL_WINDOW_WIDTH/2-150, OVERALL_WINDOW_HEIGHT/2-100, 250, 10);
+    insertAndSetFirstWall(&head, 9,  OVERALL_WINDOW_WIDTH/2+200, OVERALL_WINDOW_HEIGHT/2-200, 10, 300);
+    insertAndSetFirstWall(&head, 10,  OVERALL_WINDOW_WIDTH/2+100, OVERALL_WINDOW_HEIGHT/2-100, 10, 300);
+    insertAndSetFirstWall(&head, 11,  OVERALL_WINDOW_WIDTH/2+100, OVERALL_WINDOW_HEIGHT/2+200, OVERALL_WINDOW_WIDTH/2-100, 10);
+    insertAndSetFirstWall(&head, 12,  OVERALL_WINDOW_WIDTH/2+200, OVERALL_WINDOW_HEIGHT/2+100, OVERALL_WINDOW_WIDTH/2-100, 10);
+
+    setup_robot(&robot);
+//    updateAllWalls(head, renderer2);
+
     SDL_Event event;
+
     while(!done){
         SDL_SetRenderDrawColor(renderer, 200, 200, 200, 255);
         SDL_RenderClear(renderer);
+
+//        SDL_SetRenderDrawColor(renderer2, 97, 97, 97, 255);
+//        SDL_RenderClear(renderer2);
 
         //Move robot based on user input commands/auto commands
         if (robot.auto_mode == 1)
@@ -70,20 +98,19 @@ int main(int argc, char *argv[]) {
             robotCrash(&robot);
         //Otherwise compute sensor information
         else {
+            front_right_sensor = checkRobotSensorFrontRightAllWalls(&robot, head);
+            if (front_right_sensor>0)
+                printf("Getting close on the right. Score = %d\n", front_right_sensor);
 
-            lidar_sensor = checkRobotSensorLidarAllWalls(&robot, head);
-            if(lidar_sensor > 0)
-            {
-                printf("%d,     %d,     %d\n", SENSOR_VISION, lidar_sensor, (SENSOR_VISION - lidar_sensor));
-                lidarUpdate(renderer, &robot);
-            }
         }
-
         robotUpdate(renderer, &robot);
+//        internalMap(renderer2, &robot);
         updateAllWalls(head, renderer);
+//        updateAllWalls(head, renderer2);
 
         // Check for user input
         SDL_RenderPresent(renderer);
+        SDL_RenderPresent(renderer2);
         while(SDL_PollEvent(&event)){
             if(event.type == SDL_QUIT){
                 done = 1;
@@ -114,5 +141,7 @@ int main(int argc, char *argv[]) {
     }
     SDL_DestroyRenderer(renderer);
     SDL_DestroyWindow(window);
+//    SDL_DestroyRenderer(renderer2);
+    SDL_DestroyWindow(window2);
     printf("DEAD\n");
 }
