@@ -13,7 +13,6 @@ void setup_robot(struct Robot *robot){
     robot->currentSpeed = 0;
     robot->crashed = 0;
     robot->auto_mode = 0;
-    robot->vision;
 
     printf("Press arrow keys to move manually, or enter to move automatically\n\n");
 }
@@ -97,17 +96,19 @@ int checkRobotSensorFrontRightAllWalls(struct Robot * robot, struct Wall_collect
 
     for (j = 0; j < 360; j++)
     {
-        for (i = 0; i < SENSOR_VISION; i++)
+        robot->vision[j] = 0;
+
+        for (i = 0; i < SENSOR_VISION - 10; i++)
         {
             ptr = head_store;
             //+(ROBOT_WIDTH/2-2)*cos((robot->angle + j)*PI/180)
             //+(ROBOT_WIDTH/2-2)*sin((robot->angle + j)*PI/180)
-            /*xDir = round(robotCentreX-
+            xDir = round(robotCentreX-
                          (-ROBOT_HEIGHT/2-SENSOR_VISION+sensorSensitivityLength*i)*sin((robot->angle + j)*PI/180));
             yDir = round(robotCentreY+
-                         (-ROBOT_HEIGHT/2-SENSOR_VISION+sensorSensitivityLength*i)*cos((robot->angle + j)*PI/180));*/
-            xDir = round(robotCentreX + i * sin((robot->angle + j)*PI/180));
-            yDir = round(robotCentreY + i * cos((robot->angle + j)*PI/180));
+                         (-ROBOT_HEIGHT/2-SENSOR_VISION+sensorSensitivityLength*i)*cos((robot->angle + j)*PI/180));
+            /*xDir = round(robotCentreX + i * sin((robot->angle + j)*PI/180));
+            yDir = round(robotCentreY + i * cos((robot->angle + j)*PI/180));*/
             xTL = (int) xDir;
             yTL = (int) yDir;
             hit = 0;
@@ -122,7 +123,7 @@ int checkRobotSensorFrontRightAllWalls(struct Robot * robot, struct Wall_collect
                 robot->vision[j] = score;
             }
         }
-        printf("(%d, %d)", j, score);
+        //printf("(%d, %d)", j, score);
     }
     return score;
 }
@@ -207,13 +208,22 @@ void robotUpdate(struct SDL_Renderer * renderer, struct Robot * robot){
 
 void internalMap(struct SDL_Renderer * renderer, struct Robot * robot)
 {
-    for(int k = 0; k < SENSOR_VISION; k++)
+    for (int j=0; j<360; j++)
     {
-        SDL_Rect rect = {20, 20, 2, 1};
-        SDL_SetRenderDrawColor(renderer, 80+(20*(SENSOR_VISION)), 80+(20*(SENSOR_VISION)), 80+(20*(SENSOR_VISION)), 0);
-        SDL_RenderDrawRect(renderer, &rect);
-        SDL_RenderFillRect(renderer, &rect);
+        if (robot->vision[j] != 0) {
+            int x_cor = (sin((robot->angle + j) * PI/180) * robot->vision[j]) + robot->x;
+            int y_cor = -(cos((robot->angle + j) * PI/180) * robot->vision[j]) + robot->y;
+
+            printf("(%d, %d)", j, robot->vision[j]);
+
+            SDL_Rect rect = {x_cor, y_cor, 10, 10};
+            SDL_SetRenderDrawColor(renderer, 255, 255, 255, 69);
+            SDL_RenderDrawRect(renderer, &rect);
+            SDL_RenderFillRect(renderer, &rect);
+        }
     }
+
+    // exit(0);
 }
 
 

@@ -1291,8 +1291,7 @@
 	<math.h>
 	"SDL.h"
 
-<<<<<<< Updated upstream
-1634610952 ated upstream
+1634610298 ated upstream
 	"formulas.h"
 	"time.h"
 	"wall.h"
@@ -1328,11 +1327,19 @@
 	"wall.h"
 	"robot.h"
 
-1634881415 shed changes
+1635565016 shed changes
 	"stdio.h"
 	"stdlib.h"
 	"sdl.h"
 	"SDL2_gfxPrimitives.h"
+	"stdio.h"
+	"stdlib.h"
+	"sdl.h"
+	"SDL2_gfxPrimitives.h"
+	"time.h"
+	"formulas.h"
+	"wall.h"
+	"robot.h"
 
 1634877957 h"
 	"time.h"
@@ -1730,19 +1737,13 @@
 
 1634799902 
 
-=======
->>>>>>> Stashed changes
 1634610298 source:c:\users\vishn\documents\github\elec-bot\src\formulas.c
 	"formulas.h"
 
 1634610298 c:\users\vishn\documents\github\elec-bot\src\formulas.h
 	"math.h"
 
-<<<<<<< Updated upstream
-1635508916 source:c:\users\vishn\documents\github\elec-bot\src\main.c
-=======
-1635567099 source:c:\users\vishn\documents\github\elec-bot\src\main.c
->>>>>>> Stashed changes
+1635578607 source:c:\users\vishn\documents\github\elec-bot\src\main.c
 	"stdio.h"
 	"stdlib.h"
 	"sdl.h"
@@ -2135,11 +2136,7 @@
 	"SDL2_gfxPrimitives.h"
 	"structures.h"
 
-<<<<<<< Updated upstream
-1635508915 c:\users\vishn\documents\github\elec-bot\src\structures.h
-=======
-1635511218 c:\users\vishn\documents\github\elec-bot\src\structures.h
->>>>>>> Stashed changes
+1635567254 c:\users\vishn\documents\github\elec-bot\src\structures.h
 
 1634610298 c:\users\vishn\documents\github\elec-bot\src\robot.h
 	"stdio.h"
@@ -2151,19 +2148,11 @@
 	"wall.h"
 	"math.h"
 
-<<<<<<< Updated upstream
-1635508185 source:c:\users\vishn\documents\github\elec-bot\src\robot.c
-	"robot.h"
-
-1635508915 source:c:\users\vishn\documents\github\elec-bot\src\wall.c
-	"wall.h"
-
-=======
-1635508915 source:c:\users\vishn\documents\github\elec-bot\src\wall.c
-	"wall.h"
-
-1635565016 source:c:\users\vishn\documents\github\elec-bot\src\robot.c
+1635578316 source:c:\users\vishn\documents\github\elec-bot\src\robot.c
 	"robot.h"
 	"stdio.h"
 
->>>>>>> Stashed changes
+1635508915 source:c:\users\vishn\documents\github\elec-bot\src\wall.c
+	"wall.h"
+	"wall.h"
+
