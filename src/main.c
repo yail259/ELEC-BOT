@@ -64,7 +64,7 @@ int main(int argc, char *argv[]) {
 
         //Move robot based on user input commands/auto commands
         if (robot.auto_mode == 1)
-            robotAutoMotorMove(&robot, front_left_sensor, front_right_sensor);
+            robotAutoMotorMove(&robot);
         robotMotorMove(&robot);
 
         //Check if robot reaches endpoint. and check sensor values
@@ -78,8 +78,8 @@ int main(int argc, char *argv[]) {
         //Otherwise compute sensor information
         else {
             front_right_sensor = checkRobotSensorFrontRightAllWalls(&robot, head);
-            if (front_right_sensor>0)
-                printf("Getting close on the right. Score = %d\n", front_right_sensor);
+            /*if (front_right_sensor>0)
+                printf("Getting close on the right. Score = %d\n", front_right_sensor);*/
             internalMap(renderer2, &robot);
 
         }

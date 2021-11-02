@@ -41,6 +41,7 @@ struct Robot {
     int crashed;
     int auto_mode;
     int vision[360];
+    int degreeMaxChange;
 };
 
 #endif // STRUCTURES_H_INCLUDED

@@ -1743,7 +1743,7 @@
 1634610298 c:\users\vishn\documents\github\elec-bot\src\formulas.h
 	"math.h"
 
-1635578607 source:c:\users\vishn\documents\github\elec-bot\src\main.c
+1635585470 source:c:\users\vishn\documents\github\elec-bot\src\main.c
 	"stdio.h"
 	"stdlib.h"
 	"sdl.h"
@@ -2136,9 +2136,9 @@
 	"SDL2_gfxPrimitives.h"
 	"structures.h"
 
-1635567254 c:\users\vishn\documents\github\elec-bot\src\structures.h
+1635590401 c:\users\vishn\documents\github\elec-bot\src\structures.h
 
-1634610298 c:\users\vishn\documents\github\elec-bot\src\robot.h
+1635585282 c:\users\vishn\documents\github\elec-bot\src\robot.h
 	"stdio.h"
 	"stdlib.h"
 	"sdl.h"
@@ -2148,7 +2148,7 @@
 	"wall.h"
 	"math.h"
 
-1635578316 source:c:\users\vishn\documents\github\elec-bot\src\robot.c
+1635586082 source:c:\users\vishn\documents\github\elec-bot\src\robot.c
 	"robot.h"
 	"stdio.h"
 

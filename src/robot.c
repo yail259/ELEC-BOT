@@ -13,6 +13,7 @@ void setup_robot(struct Robot *robot){
     robot->currentSpeed = 0;
     robot->crashed = 0;
     robot->auto_mode = 0;
+    robot->degreeMaxChange = 1;
 
     printf("Press arrow keys to move manually, or enter to move automatically\n\n");
 }
@@ -121,9 +122,19 @@ int checkRobotSensorFrontRightAllWalls(struct Robot * robot, struct Wall_collect
             {
                 score = SENSOR_VISION - i;
                 robot->vision[j] = score;
+                if (j != 0 && robot->vision[j - 1] != 0)
+                {
+                    int newChange = score - robot->vision[j-1];
+                    printf("(%d %d)", j, newChange);
+                    if (newChange > (robot->vision[robot->degreeMaxChange] - robot->vision[robot->degreeMaxChange-1]))
+                    {
+                        robot->degreeMaxChange = j;
+                    }
+                }
             }
         }
         //printf("(%d, %d)", j, score);
+        //exit(0);
     }
     return score;
 }
@@ -214,7 +225,7 @@ void internalMap(struct SDL_Renderer * renderer, struct Robot * robot)
             int x_cor = (sin((robot->angle + j) * PI/180) * robot->vision[j]) + robot->x;
             int y_cor = -(cos((robot->angle + j) * PI/180) * robot->vision[j]) + robot->y;
 
-            printf("(%d, %d)", j, robot->vision[j]);
+            // main PRINT printf("(%d, %d)", j, robot->vision[j]);
 
             SDL_Rect rect = {x_cor, y_cor, 10, 10};
             SDL_SetRenderDrawColor(renderer, 255, 255, 255, 69);
@@ -261,22 +272,34 @@ void robotMotorMove(struct Robot * robot) {
     robot->y = (int) y_offset;
 }
 
-void robotAutoMotorMove(struct Robot * robot, int front_left_sensor, int front_right_sensor) {
+void robotAutoMotorMove(struct Robot * robot) {
 
-    if ((front_left_sensor == 0) && (front_right_sensor == 0)) {
-        if (robot->currentSpeed<2)
-            robot->direction = UP;
+    printf("%d\n", robot->degreeMaxChange);
+
+    if(robot->vision[0] == 0 || robot->vision[0] > 80)
+    {
+        robot->direction = UP;
+        robotMotorMove(&robot);
     }
-    else if ((robot->currentSpeed>0) && ((front_left_sensor == 1) || (front_right_sensor == 1)) ) {
-        robot->direction = DOWN;
+
+    else if (robot->vision[0] <= 80)
+    {
+        if(robot->degreeMaxChange < 180)
+        {
+            for(int k = 0; k < robot->degreeMaxChange; k++)
+            {
+                robot->direction = RIGHT;
+                robotMotorMove(&robot);
+            }
+        }
+        else
+        {
+            for(int k = 0; k < robot->degreeMaxChange; k++)
+            {
+                robot->direction = LEFT;
+                robotMotorMove(&robot);
+            }
+        }
     }
-    else if ((robot->currentSpeed==0) && ((front_left_sensor == 1) || (front_right_sensor == 1)) ) {
-        robot->direction = LEFT;
-    }
-    else if ((robot->currentSpeed==0) && ((front_left_sensor == 1) || (front_right_sensor == 0)) ) {
-        robot->direction = RIGHT;
-    }
-    else if ((robot->currentSpeed==0) && ((front_left_sensor == 0) || (front_right_sensor == 1)) ) {
-        robot->direction = RIGHT;
-    }
+    robotMotorMove(&robot);
 }
