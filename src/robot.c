@@ -14,6 +14,7 @@ void setup_robot(struct Robot *robot){
     robot->crashed = 0;
     robot->auto_mode = 0;
     robot->degreeMaxChange = 1;
+    robot->maxDistance = 0;
 
     printf("Press arrow keys to move manually, or enter to move automatically\n\n");
 }
@@ -122,20 +123,27 @@ int checkRobotSensorFrontRightAllWalls(struct Robot * robot, struct Wall_collect
             {
                 score = SENSOR_VISION - i;
                 robot->vision[j] = score;
-                if (j != 0 && robot->vision[j - 1] != 0)
-                {
-                    int newChange = score - robot->vision[j-1];
-                    printf("(%d %d)", j, newChange);
-                    if (newChange > (robot->vision[robot->degreeMaxChange] - robot->vision[robot->degreeMaxChange-1]))
-                    {
-                        robot->degreeMaxChange = j;
-                    }
-                }
             }
         }
-        //printf("(%d, %d)", j, score);
-        //exit(0);
+        if (j > 2 && robot->vision[j - 1] != 0 && robot->vision[j] != 0)
+        {
+            int newChange = abs(score - robot->vision[j-1]);
+            int maxChange = abs(robot->vision[robot->degreeMaxChange] - robot->vision[robot->degreeMaxChange-1]);
+            //printf("(%d %d)", newChange,maxChange);
+            if (newChange > maxChange)
+            {
+                robot->degreeMaxChange = j;
+                // printf("(%d, %d)", robot->degreeMaxChange, j);
+            }
+        }
+
+        if (robot->vision[j] >= robot->maxDistance)
+        {
+            robot->maxDistance = robot->vision[j];
+            printf("%d", robot->maxDistance);
+        }
     }
+    //exit(0);
     return score;
 }
 
@@ -221,11 +229,17 @@ void internalMap(struct SDL_Renderer * renderer, struct Robot * robot)
 {
     for (int j=0; j<360; j++)
     {
+
         if (robot->vision[j] != 0) {
             int x_cor = (sin((robot->angle + j) * PI/180) * robot->vision[j]) + robot->x;
             int y_cor = -(cos((robot->angle + j) * PI/180) * robot->vision[j]) + robot->y;
 
             // main PRINT printf("(%d, %d)", j, robot->vision[j]);
+
+            robot->robotMap[j][0] = x_cor;
+            robot->robotMap[j][1] = y_cor;
+
+            //printf("(%d, %d)", robot->robotMap[j][0], robot->robotMap[j][1]);
 
             SDL_Rect rect = {x_cor, y_cor, 10, 10};
             SDL_SetRenderDrawColor(renderer, 255, 255, 255, 69);
@@ -234,7 +248,32 @@ void internalMap(struct SDL_Renderer * renderer, struct Robot * robot)
         }
     }
 
-    // exit(0);
+    for(int l=0; l < 360; l++)
+    {
+        if(robot->vision[(l+360-180)%180] != 0 && robot->vision[l] != 0)
+        {
+            int opposite_x = robot->robotMap[(-l+360)%360][0];
+            int opposite_y = robot->robotMap[(-l+360)%360][1];
+
+            int x_mod = robot->robotMap[l][0];
+            int y_mod = robot->robotMap[l][1];
+
+            if(opposite_x != x_mod && opposite_y != y_mod && l > 245 && l < 295)
+            {
+                int avg_x = (opposite_x + x_mod)/2;
+                int avg_y = (opposite_y + y_mod)/2;
+
+                SDL_Rect rect = {avg_x, avg_y, 10, 10};
+                SDL_SetRenderDrawColor(renderer, 255, 165, 0, 69);
+                SDL_RenderDrawRect(renderer, &rect);
+                SDL_RenderFillRect(renderer, &rect);
+
+                //printf("OPP(%d, %d)", opposite_x, opposite_y);
+            }
+        }
+    }
+
+    //exit(0);
 }
 
 
@@ -274,7 +313,7 @@ void robotMotorMove(struct Robot * robot) {
 
 void robotAutoMotorMove(struct Robot * robot) {
 
-    printf("%d\n", robot->degreeMaxChange);
+    //printf("%d\n", robot->degreeMaxChange);
 
     if(robot->vision[0] == 0 || robot->vision[0] > 80)
     {
