@@ -456,7 +456,11 @@ void robotAutoMotorMove(struct Robot * robot, struct SDL_Renderer * renderer) {
     node secondNode = addNode(robot->head, 45, 23);
     node thirdNode = addNode(robot->head, 18, 69);
     */
-    /*
+
+    for (int j=0; j<360; j++) {
+
+    }
+
     if (robot->turnAngle > 0)
     {
         robot->direction = RIGHT;
@@ -466,7 +470,8 @@ void robotAutoMotorMove(struct Robot * robot, struct SDL_Renderer * renderer) {
         robot->direction = LEFT;
         robot->turnAngle++;
     }
-    */
+
+
 
     detectFutureNode(robot);
 
