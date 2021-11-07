@@ -64,7 +64,10 @@ int main(int argc, char *argv[]) {
 
         //Move robot based on user input commands/auto commands
         if (robot.auto_mode == 1)
-            robotAutoMotorMove(&robot);
+        {
+            robotAutoMotorMove(&robot, renderer2);
+            //drawNode(&robot, renderer2);
+        }
         robotMotorMove(&robot);
 
         //Check if robot reaches endpoint. and check sensor values

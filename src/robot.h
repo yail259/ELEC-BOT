@@ -9,7 +9,7 @@
 #include "formulas.h"
 #include "time.h"
 #include "wall.h"
-#include "math.h"
+#include "math.h"--
 
 //Setup
 void setup_robot(struct Robot *robot);
@@ -27,11 +27,23 @@ int checkRobotSensor(int x, int y, int sensorSensitivityLength, struct Wall * wa
 int checkRobotSensorFrontRightAllWalls(struct Robot * robot, struct Wall_collection * head);
 int checkRobotSensorFrontLeftAllWalls(struct Robot * robot, struct Wall_collection * head);
 
+//Pointers and Nodes
+node createNode();
+node addNode(node head, int newX, int newY);
+
+//detecting possible paths
+void detectFutureNode(struct Robot * robot);
+
+
+//Drawing Node
+void drawNode(struct Robot * robot, struct SDL_Renderer * renderer, node head);
+
+
 //Visual Display
 void robotUpdate(struct SDL_Renderer * renderer, struct Robot * robot);
 
 //Movement
 void robotMotorMove(struct Robot * robot);
-void robotAutoMotorMove(struct Robot * robot);
+void robotAutoMotorMove(struct Robot * robot, struct SDL_Renderer * renderer);
 
 #endif // ROBOT_H_INCLUDED

@@ -1,11 +1,21 @@
 # depslib dependency file v1.0
 1633999573 source:c:\users\yail\onedrive\assignments\2021 s2\elec1601 bot\formulas.c
 	"formulas.h"
+	"formulas.h"
 
 1633999573 c:\users\yail\onedrive\assignments\2021 s2\elec1601 bot\formulas.h
 	"math.h"
+	"math.h"
 
 1633999573 source:c:\users\yail\onedrive\assignments\2021 s2\elec1601 bot\main.c
+	"stdio.h"
+	"stdlib.h"
+	"sdl.h"
+	"SDL2_gfxPrimitives.h"
+	"time.h"
+	"formulas.h"
+	"wall.h"
+	"robot.h"
 	"stdio.h"
 	"stdlib.h"
 	"sdl.h"
@@ -50,8 +60,45 @@
 	"SDL_misc.h"
 	"begin_code.h"
 	"close_code.h"
+	"SDL_main.h"
+	"SDL_stdinc.h"
+	"SDL_assert.h"
+	"SDL_atomic.h"
+	"SDL_audio.h"
+	"SDL_clipboard.h"
+	"SDL_cpuinfo.h"
+	"SDL_endian.h"
+	"SDL_error.h"
+	"SDL_events.h"
+	"SDL_filesystem.h"
+	"SDL_gamecontroller.h"
+	"SDL_haptic.h"
+	"SDL_hints.h"
+	"SDL_joystick.h"
+	"SDL_loadso.h"
+	"SDL_log.h"
+	"SDL_messagebox.h"
+	"SDL_metal.h"
+	"SDL_mutex.h"
+	"SDL_power.h"
+	"SDL_render.h"
+	"SDL_rwops.h"
+	"SDL_sensor.h"
+	"SDL_shape.h"
+	"SDL_system.h"
+	"SDL_thread.h"
+	"SDL_timer.h"
+	"SDL_version.h"
+	"SDL_video.h"
+	"SDL_locale.h"
+	"SDL_misc.h"
+	"begin_code.h"
+	"close_code.h"
 
 1628614477 c:\ming_dev_lib\include\sdl2\sdl_main.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
 	"SDL_stdinc.h"
 	"begin_code.h"
 	"close_code.h"
@@ -84,12 +131,46 @@
 	<sal.h>
 	"begin_code.h"
 	"close_code.h"
+	"SDL_config.h"
+	<sys/types.h>
+	<stdio.h>
+	<stdlib.h>
+	<stddef.h>
+	<stdarg.h>
+	<stdlib.h>
+	<malloc.h>
+	<stddef.h>
+	<stdarg.h>
+	<memory.h>
+	<string.h>
+	<strings.h>
+	<wchar.h>
+	<inttypes.h>
+	<stdint.h>
+	<ctype.h>
+	<math.h>
+	<float.h>
+	<alloca.h>
+	<malloc.h>
+	<malloc.h>
+	<malloc.h>
+	<stdlib.h>
+	<sal.h>
+	"begin_code.h"
+	"close_code.h"
 
 1628614477 c:\ming_dev_lib\include\sdl2\sdl_config.h
 	"SDL_platform.h"
 	<sdkddkver.h>
+	"SDL_platform.h"
+	<sdkddkver.h>
 
 1628614477 c:\ming_dev_lib\include\sdl2\sdl_platform.h
+	"AvailabilityMacros.h"
+	"TargetConditionals.h"
+	<winapifamily.h>
+	"begin_code.h"
+	"close_code.h"
 	"AvailabilityMacros.h"
 	"TargetConditionals.h"
 	<winapifamily.h>
@@ -105,8 +186,18 @@
 	"begin_code.h"
 	<signal.h>
 	"close_code.h"
+	"SDL_config.h"
+	"begin_code.h"
+	<signal.h>
+	"close_code.h"
 
 1628614477 c:\ming_dev_lib\include\sdl2\sdl_atomic.h
+	"SDL_stdinc.h"
+	"SDL_platform.h"
+	"begin_code.h"
+	<sys/cpuinline.h>
+	<mbarrier.h>
+	"close_code.h"
 	"SDL_stdinc.h"
 	"SDL_platform.h"
 	"begin_code.h"
@@ -123,8 +214,19 @@
 	"SDL_rwops.h"
 	"begin_code.h"
 	"close_code.h"
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_endian.h"
+	"SDL_mutex.h"
+	"SDL_thread.h"
+	"SDL_rwops.h"
+	"begin_code.h"
+	"close_code.h"
 
 1628614477 c:\ming_dev_lib\include\sdl2\sdl_error.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
 	"SDL_stdinc.h"
 	"begin_code.h"
 	"close_code.h"
@@ -137,8 +239,19 @@
 	<sys/endian.h>
 	"begin_code.h"
 	"close_code.h"
+	"SDL_stdinc.h"
+	<intrin.h>
+	<endian.h>
+	<endian.h>
+	<sys/endian.h>
+	"begin_code.h"
+	"close_code.h"
 
 1628614477 c:\ming_dev_lib\include\sdl2\sdl_mutex.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"begin_code.h"
@@ -154,8 +267,21 @@
 	<stdlib.h>
 	"begin_code.h"
 	"close_code.h"
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_atomic.h"
+	"SDL_mutex.h"
+	<process.h>
+	<process.h>
+	<stdlib.h>
+	"begin_code.h"
+	"close_code.h"
 
 1628614477 c:\ming_dev_lib\include\sdl2\sdl_rwops.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"begin_code.h"
@@ -165,8 +291,29 @@
 	"SDL_stdinc.h"
 	"begin_code.h"
 	"close_code.h"
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
 
 1628614477 c:\ming_dev_lib\include\sdl2\sdl_cpuinfo.h
+	"SDL_stdinc.h"
+	<intrin.h>
+	<intrin.h>
+	<arm_neon.h>
+	<altivec.h>
+	<arm_neon.h>
+	<armintr.h>
+	<arm_neon.h>
+	<arm64intr.h>
+	<arm64_neon.h>
+	<mm3dnow.h>
+	<immintrin.h>
+	<mmintrin.h>
+	<xmmintrin.h>
+	<emmintrin.h>
+	<pmmintrin.h>
+	"begin_code.h"
+	"close_code.h"
 	"SDL_stdinc.h"
 	<intrin.h>
 	<intrin.h>
@@ -199,8 +346,26 @@
 	"SDL_touch.h"
 	"begin_code.h"
 	"close_code.h"
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_video.h"
+	"SDL_keyboard.h"
+	"SDL_mouse.h"
+	"SDL_joystick.h"
+	"SDL_gamecontroller.h"
+	"SDL_quit.h"
+	"SDL_gesture.h"
+	"SDL_touch.h"
+	"begin_code.h"
+	"close_code.h"
 
 1628614477 c:\ming_dev_lib\include\sdl2\sdl_video.h
+	"SDL_stdinc.h"
+	"SDL_pixels.h"
+	"SDL_rect.h"
+	"SDL_surface.h"
+	"begin_code.h"
+	"close_code.h"
 	"SDL_stdinc.h"
 	"SDL_pixels.h"
 	"SDL_rect.h"
@@ -213,8 +378,18 @@
 	"SDL_endian.h"
 	"begin_code.h"
 	"close_code.h"
+	"SDL_stdinc.h"
+	"SDL_endian.h"
+	"begin_code.h"
+	"close_code.h"
 
 1628614477 c:\ming_dev_lib\include\sdl2\sdl_rect.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_pixels.h"
+	"SDL_rwops.h"
+	"begin_code.h"
+	"close_code.h"
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"SDL_pixels.h"
@@ -230,8 +405,17 @@
 	"SDL_rwops.h"
 	"begin_code.h"
 	"close_code.h"
+	"SDL_stdinc.h"
+	"SDL_pixels.h"
+	"SDL_rect.h"
+	"SDL_blendmode.h"
+	"SDL_rwops.h"
+	"begin_code.h"
+	"close_code.h"
 
 1628614477 c:\ming_dev_lib\include\sdl2\sdl_blendmode.h
+	"begin_code.h"
+	"close_code.h"
 	"begin_code.h"
 	"close_code.h"
 
@@ -242,12 +426,21 @@
 	"SDL_video.h"
 	"begin_code.h"
 	"close_code.h"
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_keycode.h"
+	"SDL_video.h"
+	"begin_code.h"
+	"close_code.h"
 
 1628614477 c:\ming_dev_lib\include\sdl2\sdl_keycode.h
 	"SDL_stdinc.h"
 	"SDL_scancode.h"
+	"SDL_stdinc.h"
+	"SDL_scancode.h"
 
 1628614477 c:\ming_dev_lib\include\sdl2\sdl_scancode.h
+	"SDL_stdinc.h"
 	"SDL_stdinc.h"
 
 1628614477 c:\ming_dev_lib\include\sdl2\sdl_mouse.h
@@ -256,8 +449,17 @@
 	"SDL_video.h"
 	"begin_code.h"
 	"close_code.h"
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_video.h"
+	"begin_code.h"
+	"close_code.h"
 
 1628614477 c:\ming_dev_lib\include\sdl2\sdl_joystick.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"begin_code.h"
@@ -271,8 +473,19 @@
 	"SDL_joystick.h"
 	"begin_code.h"
 	"close_code.h"
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_rwops.h"
+	"SDL_sensor.h"
+	"SDL_joystick.h"
+	"begin_code.h"
+	"close_code.h"
 
 1628614477 c:\ming_dev_lib\include\sdl2\sdl_sensor.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"begin_code.h"
@@ -281,8 +494,16 @@
 1628614477 c:\ming_dev_lib\include\sdl2\sdl_quit.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
+	"SDL_stdinc.h"
+	"SDL_error.h"
 
 1628614477 c:\ming_dev_lib\include\sdl2\sdl_gesture.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_video.h"
+	"SDL_touch.h"
+	"begin_code.h"
+	"close_code.h"
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"SDL_video.h"
@@ -296,8 +517,16 @@
 	"SDL_video.h"
 	"begin_code.h"
 	"close_code.h"
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_video.h"
+	"begin_code.h"
+	"close_code.h"
 
 1628614477 c:\ming_dev_lib\include\sdl2\sdl_filesystem.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
 	"SDL_stdinc.h"
 	"begin_code.h"
 	"close_code.h"
@@ -308,8 +537,16 @@
 	"SDL_joystick.h"
 	"begin_code.h"
 	"close_code.h"
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_joystick.h"
+	"begin_code.h"
+	"close_code.h"
 
 1628614477 c:\ming_dev_lib\include\sdl2\sdl_hints.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
 	"SDL_stdinc.h"
 	"begin_code.h"
 	"close_code.h"
@@ -319,8 +556,15 @@
 	"SDL_error.h"
 	"begin_code.h"
 	"close_code.h"
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
 
 1628614477 c:\ming_dev_lib\include\sdl2\sdl_log.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
 	"SDL_stdinc.h"
 	"begin_code.h"
 	"close_code.h"
@@ -330,13 +574,23 @@
 	"SDL_video.h"
 	"begin_code.h"
 	"close_code.h"
+	"SDL_stdinc.h"
+	"SDL_video.h"
+	"begin_code.h"
+	"close_code.h"
 
 1628614477 c:\ming_dev_lib\include\sdl2\sdl_metal.h
 	"SDL_video.h"
 	"begin_code.h"
 	"close_code.h"
+	"SDL_video.h"
+	"begin_code.h"
+	"close_code.h"
 
 1628614477 c:\ming_dev_lib\include\sdl2\sdl_power.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
 	"SDL_stdinc.h"
 	"begin_code.h"
 	"close_code.h"
@@ -347,8 +601,20 @@
 	"SDL_video.h"
 	"begin_code.h"
 	"close_code.h"
+	"SDL_stdinc.h"
+	"SDL_rect.h"
+	"SDL_video.h"
+	"begin_code.h"
+	"close_code.h"
 
 1628614477 c:\ming_dev_lib\include\sdl2\sdl_shape.h
+	"SDL_stdinc.h"
+	"SDL_pixels.h"
+	"SDL_rect.h"
+	"SDL_surface.h"
+	"SDL_video.h"
+	"begin_code.h"
+	"close_code.h"
 	"SDL_stdinc.h"
 	"SDL_pixels.h"
 	"SDL_rect.h"
@@ -364,8 +630,18 @@
 	"SDL_video.h"
 	"begin_code.h"
 	"close_code.h"
+	"SDL_stdinc.h"
+	"SDL_keyboard.h"
+	"SDL_render.h"
+	"SDL_video.h"
+	"begin_code.h"
+	"close_code.h"
 
 1628614477 c:\ming_dev_lib\include\sdl2\sdl_timer.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"begin_code.h"
@@ -375,8 +651,15 @@
 	"SDL_stdinc.h"
 	"begin_code.h"
 	"close_code.h"
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
 
 1628614477 c:\ming_dev_lib\include\sdl2\sdl_locale.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"begin_code.h"
@@ -386,12 +669,22 @@
 	"SDL_stdinc.h"
 	"begin_code.h"
 	"close_code.h"
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
 
 1634004102 c:\ming_dev_lib\sdl2_gfx-1.0.1\sdl2_gfxprimitives.h
 	<math.h>
 	"SDL.h"
+	<math.h>
+	"SDL.h"
 
 1633999574 c:\users\yail\onedrive\assignments\2021 s2\elec1601 bot\wall.h
+	"stdio.h"
+	"stdlib.h"
+	"sdl.h"
+	"SDL2_gfxPrimitives.h"
+	"structures.h"
 	"stdio.h"
 	"stdlib.h"
 	"sdl.h"
@@ -409,17 +702,29 @@
 	"time.h"
 	"wall.h"
 	"math.h"
+	"stdio.h"
+	"stdlib.h"
+	"sdl.h"
+	"SDL2_gfxPrimitives.h"
+	"formulas.h"
+	"time.h"
+	"wall.h"
+	"math.h"
 
 1633999573 source:c:\users\yail\onedrive\assignments\2021 s2\elec1601 bot\robot.c
+	"robot.h"
 	"robot.h"
 
 1633999574 source:c:\users\yail\onedrive\assignments\2021 s2\elec1601 bot\wall.c
 	"wall.h"
+	"wall.h"
 
 1633999573 source:c:\users\yail\onedrive\assignments\2021_s2\elec1601 bot\formulas.c
 	"formulas.h"
+	"formulas.h"
 
 1633999573 c:\users\yail\onedrive\assignments\2021_s2\elec1601 bot\formulas.h
+	"math.h"
 	"math.h"
 
 1633999573 source:c:\users\yail\onedrive\assignments\2021_s2\elec1601 bot\main.c
@@ -431,8 +736,21 @@
 	"formulas.h"
 	"wall.h"
 	"robot.h"
+	"stdio.h"
+	"stdlib.h"
+	"sdl.h"
+	"SDL2_gfxPrimitives.h"
+	"time.h"
+	"formulas.h"
+	"wall.h"
+	"robot.h"
 
 1633999574 c:\users\yail\onedrive\assignments\2021_s2\elec1601 bot\wall.h
+	"stdio.h"
+	"stdlib.h"
+	"sdl.h"
+	"SDL2_gfxPrimitives.h"
+	"structures.h"
 	"stdio.h"
 	"stdlib.h"
 	"sdl.h"
@@ -450,17 +768,29 @@
 	"time.h"
 	"wall.h"
 	"math.h"
+	"stdio.h"
+	"stdlib.h"
+	"sdl.h"
+	"SDL2_gfxPrimitives.h"
+	"formulas.h"
+	"time.h"
+	"wall.h"
+	"math.h"
 
 1633999573 source:c:\users\yail\onedrive\assignments\2021_s2\elec1601 bot\robot.c
+	"robot.h"
 	"robot.h"
 
 1633999574 source:c:\users\yail\onedrive\assignments\2021_s2\elec1601 bot\wall.c
 	"wall.h"
+	"wall.h"
 
 1633999573 source:c:\users\yail\onedrive\assignments\2021_s2\elec-bot\elec-bot\formulas.c
 	"formulas.h"
+	"formulas.h"
 
 1633999573 c:\users\yail\onedrive\assignments\2021_s2\elec-bot\elec-bot\formulas.h
+	"math.h"
 	"math.h"
 
 1633999573 source:c:\users\yail\onedrive\assignments\2021_s2\elec-bot\elec-bot\main.c
@@ -472,8 +802,21 @@
 	"formulas.h"
 	"wall.h"
 	"robot.h"
+	"stdio.h"
+	"stdlib.h"
+	"sdl.h"
+	"SDL2_gfxPrimitives.h"
+	"time.h"
+	"formulas.h"
+	"wall.h"
+	"robot.h"
 
 1633999574 c:\users\yail\onedrive\assignments\2021_s2\elec-bot\elec-bot\wall.h
+	"stdio.h"
+	"stdlib.h"
+	"sdl.h"
+	"SDL2_gfxPrimitives.h"
+	"structures.h"
 	"stdio.h"
 	"stdlib.h"
 	"sdl.h"
@@ -491,14 +834,58 @@
 	"time.h"
 	"wall.h"
 	"math.h"
+	"stdio.h"
+	"stdlib.h"
+	"sdl.h"
+	"SDL2_gfxPrimitives.h"
+	"formulas.h"
+	"time.h"
+	"wall.h"
+	"math.h"
 
 1633999573 source:c:\users\yail\onedrive\assignments\2021_s2\elec-bot\elec-bot\robot.c
+	"robot.h"
 	"robot.h"
 
 1633999574 source:c:\users\yail\onedrive\assignments\2021_s2\elec-bot\elec-bot\wall.c
 	"wall.h"
+	"wall.h"
 
 1634606325 c:\users\yail\onedrive\assignments\2021_s2\elec-bot\os\windows\include\sdl2\sdl.h
+	"SDL_main.h"
+	"SDL_stdinc.h"
+	"SDL_assert.h"
+	"SDL_atomic.h"
+	"SDL_audio.h"
+	"SDL_clipboard.h"
+	"SDL_cpuinfo.h"
+	"SDL_endian.h"
+	"SDL_error.h"
+	"SDL_events.h"
+	"SDL_filesystem.h"
+	"SDL_gamecontroller.h"
+	"SDL_haptic.h"
+	"SDL_hints.h"
+	"SDL_joystick.h"
+	"SDL_loadso.h"
+	"SDL_log.h"
+	"SDL_messagebox.h"
+	"SDL_metal.h"
+	"SDL_mutex.h"
+	"SDL_power.h"
+	"SDL_render.h"
+	"SDL_rwops.h"
+	"SDL_sensor.h"
+	"SDL_shape.h"
+	"SDL_system.h"
+	"SDL_thread.h"
+	"SDL_timer.h"
+	"SDL_version.h"
+	"SDL_video.h"
+	"SDL_locale.h"
+	"SDL_misc.h"
+	"begin_code.h"
+	"close_code.h"
 	"SDL_main.h"
 	"SDL_stdinc.h"
 	"SDL_assert.h"
@@ -538,8 +925,38 @@
 	"SDL_stdinc.h"
 	"begin_code.h"
 	"close_code.h"
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
 
 1634606328 c:\users\yail\onedrive\assignments\2021_s2\elec-bot\os\windows\include\sdl2\sdl_stdinc.h
+	"SDL_config.h"
+	<sys/types.h>
+	<stdio.h>
+	<stdlib.h>
+	<stddef.h>
+	<stdarg.h>
+	<stdlib.h>
+	<malloc.h>
+	<stddef.h>
+	<stdarg.h>
+	<memory.h>
+	<string.h>
+	<strings.h>
+	<wchar.h>
+	<inttypes.h>
+	<stdint.h>
+	<ctype.h>
+	<math.h>
+	<float.h>
+	<alloca.h>
+	<malloc.h>
+	<malloc.h>
+	<malloc.h>
+	<stdlib.h>
+	<sal.h>
+	"begin_code.h"
+	"close_code.h"
 	"SDL_config.h"
 	<sys/types.h>
 	<stdio.h>
@@ -571,8 +988,15 @@
 1634606325 c:\users\yail\onedrive\assignments\2021_s2\elec-bot\os\windows\include\sdl2\sdl_config.h
 	"SDL_platform.h"
 	<sdkddkver.h>
+	"SDL_platform.h"
+	<sdkddkver.h>
 
 1634606328 c:\users\yail\onedrive\assignments\2021_s2\elec-bot\os\windows\include\sdl2\sdl_platform.h
+	"AvailabilityMacros.h"
+	"TargetConditionals.h"
+	<winapifamily.h>
+	"begin_code.h"
+	"close_code.h"
 	"AvailabilityMacros.h"
 	"TargetConditionals.h"
 	<winapifamily.h>
@@ -588,8 +1012,18 @@
 	"begin_code.h"
 	<signal.h>
 	"close_code.h"
+	"SDL_config.h"
+	"begin_code.h"
+	<signal.h>
+	"close_code.h"
 
 1634606325 c:\users\yail\onedrive\assignments\2021_s2\elec-bot\os\windows\include\sdl2\sdl_atomic.h
+	"SDL_stdinc.h"
+	"SDL_platform.h"
+	"begin_code.h"
+	<sys/cpuinline.h>
+	<mbarrier.h>
+	"close_code.h"
 	"SDL_stdinc.h"
 	"SDL_platform.h"
 	"begin_code.h"
@@ -606,8 +1040,19 @@
 	"SDL_rwops.h"
 	"begin_code.h"
 	"close_code.h"
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_endian.h"
+	"SDL_mutex.h"
+	"SDL_thread.h"
+	"SDL_rwops.h"
+	"begin_code.h"
+	"close_code.h"
 
 1634606326 c:\users\yail\onedrive\assignments\2021_s2\elec-bot\os\windows\include\sdl2\sdl_error.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
 	"SDL_stdinc.h"
 	"begin_code.h"
 	"close_code.h"
@@ -620,8 +1065,19 @@
 	<sys/endian.h>
 	"begin_code.h"
 	"close_code.h"
+	"SDL_stdinc.h"
+	<intrin.h>
+	<endian.h>
+	<endian.h>
+	<sys/endian.h>
+	"begin_code.h"
+	"close_code.h"
 
 1634606327 c:\users\yail\onedrive\assignments\2021_s2\elec-bot\os\windows\include\sdl2\sdl_mutex.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"begin_code.h"
@@ -637,8 +1093,21 @@
 	<stdlib.h>
 	"begin_code.h"
 	"close_code.h"
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_atomic.h"
+	"SDL_mutex.h"
+	<process.h>
+	<process.h>
+	<stdlib.h>
+	"begin_code.h"
+	"close_code.h"
 
 1634606328 c:\users\yail\onedrive\assignments\2021_s2\elec-bot\os\windows\include\sdl2\sdl_rwops.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"begin_code.h"
@@ -648,8 +1117,29 @@
 	"SDL_stdinc.h"
 	"begin_code.h"
 	"close_code.h"
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
 
 1634606326 c:\users\yail\onedrive\assignments\2021_s2\elec-bot\os\windows\include\sdl2\sdl_cpuinfo.h
+	"SDL_stdinc.h"
+	<intrin.h>
+	<intrin.h>
+	<arm_neon.h>
+	<altivec.h>
+	<arm_neon.h>
+	<armintr.h>
+	<arm_neon.h>
+	<arm64intr.h>
+	<arm64_neon.h>
+	<mm3dnow.h>
+	<immintrin.h>
+	<mmintrin.h>
+	<xmmintrin.h>
+	<emmintrin.h>
+	<pmmintrin.h>
+	"begin_code.h"
+	"close_code.h"
 	"SDL_stdinc.h"
 	<intrin.h>
 	<intrin.h>
@@ -682,8 +1172,26 @@
 	"SDL_touch.h"
 	"begin_code.h"
 	"close_code.h"
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_video.h"
+	"SDL_keyboard.h"
+	"SDL_mouse.h"
+	"SDL_joystick.h"
+	"SDL_gamecontroller.h"
+	"SDL_quit.h"
+	"SDL_gesture.h"
+	"SDL_touch.h"
+	"begin_code.h"
+	"close_code.h"
 
 1634606329 c:\users\yail\onedrive\assignments\2021_s2\elec-bot\os\windows\include\sdl2\sdl_video.h
+	"SDL_stdinc.h"
+	"SDL_pixels.h"
+	"SDL_rect.h"
+	"SDL_surface.h"
+	"begin_code.h"
+	"close_code.h"
 	"SDL_stdinc.h"
 	"SDL_pixels.h"
 	"SDL_rect.h"
@@ -696,8 +1204,18 @@
 	"SDL_endian.h"
 	"begin_code.h"
 	"close_code.h"
+	"SDL_stdinc.h"
+	"SDL_endian.h"
+	"begin_code.h"
+	"close_code.h"
 
 1634606328 c:\users\yail\onedrive\assignments\2021_s2\elec-bot\os\windows\include\sdl2\sdl_rect.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_pixels.h"
+	"SDL_rwops.h"
+	"begin_code.h"
+	"close_code.h"
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"SDL_pixels.h"
@@ -713,8 +1231,17 @@
 	"SDL_rwops.h"
 	"begin_code.h"
 	"close_code.h"
+	"SDL_stdinc.h"
+	"SDL_pixels.h"
+	"SDL_rect.h"
+	"SDL_blendmode.h"
+	"SDL_rwops.h"
+	"begin_code.h"
+	"close_code.h"
 
 1634606325 c:\users\yail\onedrive\assignments\2021_s2\elec-bot\os\windows\include\sdl2\sdl_blendmode.h
+	"begin_code.h"
+	"close_code.h"
 	"begin_code.h"
 	"close_code.h"
 
@@ -725,12 +1252,21 @@
 	"SDL_video.h"
 	"begin_code.h"
 	"close_code.h"
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_keycode.h"
+	"SDL_video.h"
+	"begin_code.h"
+	"close_code.h"
 
 1634606326 c:\users\yail\onedrive\assignments\2021_s2\elec-bot\os\windows\include\sdl2\sdl_keycode.h
 	"SDL_stdinc.h"
 	"SDL_scancode.h"
+	"SDL_stdinc.h"
+	"SDL_scancode.h"
 
 1634606328 c:\users\yail\onedrive\assignments\2021_s2\elec-bot\os\windows\include\sdl2\sdl_scancode.h
+	"SDL_stdinc.h"
 	"SDL_stdinc.h"
 
 1634606327 c:\users\yail\onedrive\assignments\2021_s2\elec-bot\os\windows\include\sdl2\sdl_mouse.h
@@ -739,8 +1275,17 @@
 	"SDL_video.h"
 	"begin_code.h"
 	"close_code.h"
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_video.h"
+	"begin_code.h"
+	"close_code.h"
 
 1634606326 c:\users\yail\onedrive\assignments\2021_s2\elec-bot\os\windows\include\sdl2\sdl_joystick.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"begin_code.h"
@@ -754,8 +1299,19 @@
 	"SDL_joystick.h"
 	"begin_code.h"
 	"close_code.h"
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_rwops.h"
+	"SDL_sensor.h"
+	"SDL_joystick.h"
+	"begin_code.h"
+	"close_code.h"
 
 1634606328 c:\users\yail\onedrive\assignments\2021_s2\elec-bot\os\windows\include\sdl2\sdl_sensor.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"begin_code.h"
@@ -764,8 +1320,16 @@
 1634606328 c:\users\yail\onedrive\assignments\2021_s2\elec-bot\os\windows\include\sdl2\sdl_quit.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
+	"SDL_stdinc.h"
+	"SDL_error.h"
 
 1634606326 c:\users\yail\onedrive\assignments\2021_s2\elec-bot\os\windows\include\sdl2\sdl_gesture.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_video.h"
+	"SDL_touch.h"
+	"begin_code.h"
+	"close_code.h"
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"SDL_video.h"
@@ -779,8 +1343,16 @@
 	"SDL_video.h"
 	"begin_code.h"
 	"close_code.h"
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_video.h"
+	"begin_code.h"
+	"close_code.h"
 
 1634606326 c:\users\yail\onedrive\assignments\2021_s2\elec-bot\os\windows\include\sdl2\sdl_filesystem.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
 	"SDL_stdinc.h"
 	"begin_code.h"
 	"close_code.h"
@@ -791,8 +1363,16 @@
 	"SDL_joystick.h"
 	"begin_code.h"
 	"close_code.h"
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_joystick.h"
+	"begin_code.h"
+	"close_code.h"
 
 1634606326 c:\users\yail\onedrive\assignments\2021_s2\elec-bot\os\windows\include\sdl2\sdl_hints.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
 	"SDL_stdinc.h"
 	"begin_code.h"
 	"close_code.h"
@@ -802,8 +1382,15 @@
 	"SDL_error.h"
 	"begin_code.h"
 	"close_code.h"
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
 
 1634606326 c:\users\yail\onedrive\assignments\2021_s2\elec-bot\os\windows\include\sdl2\sdl_log.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
 	"SDL_stdinc.h"
 	"begin_code.h"
 	"close_code.h"
@@ -813,13 +1400,23 @@
 	"SDL_video.h"
 	"begin_code.h"
 	"close_code.h"
+	"SDL_stdinc.h"
+	"SDL_video.h"
+	"begin_code.h"
+	"close_code.h"
 
 1634606327 c:\users\yail\onedrive\assignments\2021_s2\elec-bot\os\windows\include\sdl2\sdl_metal.h
 	"SDL_video.h"
 	"begin_code.h"
 	"close_code.h"
+	"SDL_video.h"
+	"begin_code.h"
+	"close_code.h"
 
 1634606328 c:\users\yail\onedrive\assignments\2021_s2\elec-bot\os\windows\include\sdl2\sdl_power.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
 	"SDL_stdinc.h"
 	"begin_code.h"
 	"close_code.h"
@@ -830,8 +1427,20 @@
 	"SDL_video.h"
 	"begin_code.h"
 	"close_code.h"
+	"SDL_stdinc.h"
+	"SDL_rect.h"
+	"SDL_video.h"
+	"begin_code.h"
+	"close_code.h"
 
 1634606328 c:\users\yail\onedrive\assignments\2021_s2\elec-bot\os\windows\include\sdl2\sdl_shape.h
+	"SDL_stdinc.h"
+	"SDL_pixels.h"
+	"SDL_rect.h"
+	"SDL_surface.h"
+	"SDL_video.h"
+	"begin_code.h"
+	"close_code.h"
 	"SDL_stdinc.h"
 	"SDL_pixels.h"
 	"SDL_rect.h"
@@ -847,8 +1456,18 @@
 	"SDL_video.h"
 	"begin_code.h"
 	"close_code.h"
+	"SDL_stdinc.h"
+	"SDL_keyboard.h"
+	"SDL_render.h"
+	"SDL_video.h"
+	"begin_code.h"
+	"close_code.h"
 
 1634606329 c:\users\yail\onedrive\assignments\2021_s2\elec-bot\os\windows\include\sdl2\sdl_timer.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"begin_code.h"
@@ -858,8 +1477,15 @@
 	"SDL_stdinc.h"
 	"begin_code.h"
 	"close_code.h"
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
 
 1634606326 c:\users\yail\onedrive\assignments\2021_s2\elec-bot\os\windows\include\sdl2\sdl_locale.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"begin_code.h"
@@ -869,15 +1495,22 @@
 	"SDL_stdinc.h"
 	"begin_code.h"
 	"close_code.h"
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
 
 1634606319 c:\users\yail\onedrive\assignments\2021_s2\elec-bot\os\windows\sdl2_gfx\sdl2_gfxprimitives.h
+	<math.h>
+	"..\include\SDL2\SDL.h"
 	<math.h>
 	"..\include\SDL2\SDL.h"
 
 1633999573 source:c:\users\yail\onedrive\assignments\2021_s2\elec-bot\src\formulas.c
 	"formulas.h"
+	"formulas.h"
 
 1633999573 c:\users\yail\onedrive\assignments\2021_s2\elec-bot\src\formulas.h
+	"math.h"
 	"math.h"
 
 1633999573 source:c:\users\yail\onedrive\assignments\2021_s2\elec-bot\src\main.c
@@ -889,8 +1522,21 @@
 	"formulas.h"
 	"wall.h"
 	"robot.h"
+	"stdio.h"
+	"stdlib.h"
+	"sdl.h"
+	"SDL2_gfxPrimitives.h"
+	"time.h"
+	"formulas.h"
+	"wall.h"
+	"robot.h"
 
 1633999574 c:\users\yail\onedrive\assignments\2021_s2\elec-bot\src\wall.h
+	"stdio.h"
+	"stdlib.h"
+	"sdl.h"
+	"SDL2_gfxPrimitives.h"
+	"structures.h"
 	"stdio.h"
 	"stdlib.h"
 	"sdl.h"
@@ -908,14 +1554,58 @@
 	"time.h"
 	"wall.h"
 	"math.h"
+	"stdio.h"
+	"stdlib.h"
+	"sdl.h"
+	"SDL2_gfxPrimitives.h"
+	"formulas.h"
+	"time.h"
+	"wall.h"
+	"math.h"
 
 1633999573 source:c:\users\yail\onedrive\assignments\2021_s2\elec-bot\src\robot.c
+	"robot.h"
 	"robot.h"
 
 1633999574 source:c:\users\yail\onedrive\assignments\2021_s2\elec-bot\src\wall.c
 	"wall.h"
+	"wall.h"
 
 1628614477 c:\users\yail\onedrive\assignments\2021_s2\elec-bot\ming_dev_lib\include\sdl2\sdl.h
+	"SDL_main.h"
+	"SDL_stdinc.h"
+	"SDL_assert.h"
+	"SDL_atomic.h"
+	"SDL_audio.h"
+	"SDL_clipboard.h"
+	"SDL_cpuinfo.h"
+	"SDL_endian.h"
+	"SDL_error.h"
+	"SDL_events.h"
+	"SDL_filesystem.h"
+	"SDL_gamecontroller.h"
+	"SDL_haptic.h"
+	"SDL_hints.h"
+	"SDL_joystick.h"
+	"SDL_loadso.h"
+	"SDL_log.h"
+	"SDL_messagebox.h"
+	"SDL_metal.h"
+	"SDL_mutex.h"
+	"SDL_power.h"
+	"SDL_render.h"
+	"SDL_rwops.h"
+	"SDL_sensor.h"
+	"SDL_shape.h"
+	"SDL_system.h"
+	"SDL_thread.h"
+	"SDL_timer.h"
+	"SDL_version.h"
+	"SDL_video.h"
+	"SDL_locale.h"
+	"SDL_misc.h"
+	"begin_code.h"
+	"close_code.h"
 	"SDL_main.h"
 	"SDL_stdinc.h"
 	"SDL_assert.h"
@@ -955,8 +1645,38 @@
 	"SDL_stdinc.h"
 	"begin_code.h"
 	"close_code.h"
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
 
 1628614477 c:\users\yail\onedrive\assignments\2021_s2\elec-bot\ming_dev_lib\include\sdl2\sdl_stdinc.h
+	"SDL_config.h"
+	<sys/types.h>
+	<stdio.h>
+	<stdlib.h>
+	<stddef.h>
+	<stdarg.h>
+	<stdlib.h>
+	<malloc.h>
+	<stddef.h>
+	<stdarg.h>
+	<memory.h>
+	<string.h>
+	<strings.h>
+	<wchar.h>
+	<inttypes.h>
+	<stdint.h>
+	<ctype.h>
+	<math.h>
+	<float.h>
+	<alloca.h>
+	<malloc.h>
+	<malloc.h>
+	<malloc.h>
+	<stdlib.h>
+	<sal.h>
+	"begin_code.h"
+	"close_code.h"
 	"SDL_config.h"
 	<sys/types.h>
 	<stdio.h>
@@ -988,8 +1708,15 @@
 1628614477 c:\users\yail\onedrive\assignments\2021_s2\elec-bot\ming_dev_lib\include\sdl2\sdl_config.h
 	"SDL_platform.h"
 	<sdkddkver.h>
+	"SDL_platform.h"
+	<sdkddkver.h>
 
 1628614477 c:\users\yail\onedrive\assignments\2021_s2\elec-bot\ming_dev_lib\include\sdl2\sdl_platform.h
+	"AvailabilityMacros.h"
+	"TargetConditionals.h"
+	<winapifamily.h>
+	"begin_code.h"
+	"close_code.h"
 	"AvailabilityMacros.h"
 	"TargetConditionals.h"
 	<winapifamily.h>
@@ -1005,8 +1732,18 @@
 	"begin_code.h"
 	<signal.h>
 	"close_code.h"
+	"SDL_config.h"
+	"begin_code.h"
+	<signal.h>
+	"close_code.h"
 
 1628614477 c:\users\yail\onedrive\assignments\2021_s2\elec-bot\ming_dev_lib\include\sdl2\sdl_atomic.h
+	"SDL_stdinc.h"
+	"SDL_platform.h"
+	"begin_code.h"
+	<sys/cpuinline.h>
+	<mbarrier.h>
+	"close_code.h"
 	"SDL_stdinc.h"
 	"SDL_platform.h"
 	"begin_code.h"
@@ -1023,8 +1760,19 @@
 	"SDL_rwops.h"
 	"begin_code.h"
 	"close_code.h"
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_endian.h"
+	"SDL_mutex.h"
+	"SDL_thread.h"
+	"SDL_rwops.h"
+	"begin_code.h"
+	"close_code.h"
 
 1628614477 c:\users\yail\onedrive\assignments\2021_s2\elec-bot\ming_dev_lib\include\sdl2\sdl_error.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
 	"SDL_stdinc.h"
 	"begin_code.h"
 	"close_code.h"
@@ -1037,8 +1785,19 @@
 	<sys/endian.h>
 	"begin_code.h"
 	"close_code.h"
+	"SDL_stdinc.h"
+	<intrin.h>
+	<endian.h>
+	<endian.h>
+	<sys/endian.h>
+	"begin_code.h"
+	"close_code.h"
 
 1628614477 c:\users\yail\onedrive\assignments\2021_s2\elec-bot\ming_dev_lib\include\sdl2\sdl_mutex.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"begin_code.h"
@@ -1054,8 +1813,21 @@
 	<stdlib.h>
 	"begin_code.h"
 	"close_code.h"
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_atomic.h"
+	"SDL_mutex.h"
+	<process.h>
+	<process.h>
+	<stdlib.h>
+	"begin_code.h"
+	"close_code.h"
 
 1628614477 c:\users\yail\onedrive\assignments\2021_s2\elec-bot\ming_dev_lib\include\sdl2\sdl_rwops.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"begin_code.h"
@@ -1065,8 +1837,29 @@
 	"SDL_stdinc.h"
 	"begin_code.h"
 	"close_code.h"
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
 
 1628614477 c:\users\yail\onedrive\assignments\2021_s2\elec-bot\ming_dev_lib\include\sdl2\sdl_cpuinfo.h
+	"SDL_stdinc.h"
+	<intrin.h>
+	<intrin.h>
+	<arm_neon.h>
+	<altivec.h>
+	<arm_neon.h>
+	<armintr.h>
+	<arm_neon.h>
+	<arm64intr.h>
+	<arm64_neon.h>
+	<mm3dnow.h>
+	<immintrin.h>
+	<mmintrin.h>
+	<xmmintrin.h>
+	<emmintrin.h>
+	<pmmintrin.h>
+	"begin_code.h"
+	"close_code.h"
 	"SDL_stdinc.h"
 	<intrin.h>
 	<intrin.h>
@@ -1099,8 +1892,26 @@
 	"SDL_touch.h"
 	"begin_code.h"
 	"close_code.h"
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_video.h"
+	"SDL_keyboard.h"
+	"SDL_mouse.h"
+	"SDL_joystick.h"
+	"SDL_gamecontroller.h"
+	"SDL_quit.h"
+	"SDL_gesture.h"
+	"SDL_touch.h"
+	"begin_code.h"
+	"close_code.h"
 
 1628614477 c:\users\yail\onedrive\assignments\2021_s2\elec-bot\ming_dev_lib\include\sdl2\sdl_video.h
+	"SDL_stdinc.h"
+	"SDL_pixels.h"
+	"SDL_rect.h"
+	"SDL_surface.h"
+	"begin_code.h"
+	"close_code.h"
 	"SDL_stdinc.h"
 	"SDL_pixels.h"
 	"SDL_rect.h"
@@ -1113,8 +1924,18 @@
 	"SDL_endian.h"
 	"begin_code.h"
 	"close_code.h"
+	"SDL_stdinc.h"
+	"SDL_endian.h"
+	"begin_code.h"
+	"close_code.h"
 
 1628614477 c:\users\yail\onedrive\assignments\2021_s2\elec-bot\ming_dev_lib\include\sdl2\sdl_rect.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_pixels.h"
+	"SDL_rwops.h"
+	"begin_code.h"
+	"close_code.h"
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"SDL_pixels.h"
@@ -1130,8 +1951,17 @@
 	"SDL_rwops.h"
 	"begin_code.h"
 	"close_code.h"
+	"SDL_stdinc.h"
+	"SDL_pixels.h"
+	"SDL_rect.h"
+	"SDL_blendmode.h"
+	"SDL_rwops.h"
+	"begin_code.h"
+	"close_code.h"
 
 1628614477 c:\users\yail\onedrive\assignments\2021_s2\elec-bot\ming_dev_lib\include\sdl2\sdl_blendmode.h
+	"begin_code.h"
+	"close_code.h"
 	"begin_code.h"
 	"close_code.h"
 
@@ -1142,12 +1972,21 @@
 	"SDL_video.h"
 	"begin_code.h"
 	"close_code.h"
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_keycode.h"
+	"SDL_video.h"
+	"begin_code.h"
+	"close_code.h"
 
 1628614477 c:\users\yail\onedrive\assignments\2021_s2\elec-bot\ming_dev_lib\include\sdl2\sdl_keycode.h
 	"SDL_stdinc.h"
 	"SDL_scancode.h"
+	"SDL_stdinc.h"
+	"SDL_scancode.h"
 
 1628614477 c:\users\yail\onedrive\assignments\2021_s2\elec-bot\ming_dev_lib\include\sdl2\sdl_scancode.h
+	"SDL_stdinc.h"
 	"SDL_stdinc.h"
 
 1628614477 c:\users\yail\onedrive\assignments\2021_s2\elec-bot\ming_dev_lib\include\sdl2\sdl_mouse.h
@@ -1156,8 +1995,17 @@
 	"SDL_video.h"
 	"begin_code.h"
 	"close_code.h"
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_video.h"
+	"begin_code.h"
+	"close_code.h"
 
 1628614477 c:\users\yail\onedrive\assignments\2021_s2\elec-bot\ming_dev_lib\include\sdl2\sdl_joystick.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"begin_code.h"
@@ -1171,8 +2019,19 @@
 	"SDL_joystick.h"
 	"begin_code.h"
 	"close_code.h"
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_rwops.h"
+	"SDL_sensor.h"
+	"SDL_joystick.h"
+	"begin_code.h"
+	"close_code.h"
 
 1628614477 c:\users\yail\onedrive\assignments\2021_s2\elec-bot\ming_dev_lib\include\sdl2\sdl_sensor.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"begin_code.h"
@@ -1181,8 +2040,16 @@
 1628614477 c:\users\yail\onedrive\assignments\2021_s2\elec-bot\ming_dev_lib\include\sdl2\sdl_quit.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
+	"SDL_stdinc.h"
+	"SDL_error.h"
 
 1628614477 c:\users\yail\onedrive\assignments\2021_s2\elec-bot\ming_dev_lib\include\sdl2\sdl_gesture.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_video.h"
+	"SDL_touch.h"
+	"begin_code.h"
+	"close_code.h"
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"SDL_video.h"
@@ -1196,8 +2063,16 @@
 	"SDL_video.h"
 	"begin_code.h"
 	"close_code.h"
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_video.h"
+	"begin_code.h"
+	"close_code.h"
 
 1628614477 c:\users\yail\onedrive\assignments\2021_s2\elec-bot\ming_dev_lib\include\sdl2\sdl_filesystem.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
 	"SDL_stdinc.h"
 	"begin_code.h"
 	"close_code.h"
@@ -1208,8 +2083,16 @@
 	"SDL_joystick.h"
 	"begin_code.h"
 	"close_code.h"
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_joystick.h"
+	"begin_code.h"
+	"close_code.h"
 
 1628614477 c:\users\yail\onedrive\assignments\2021_s2\elec-bot\ming_dev_lib\include\sdl2\sdl_hints.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
 	"SDL_stdinc.h"
 	"begin_code.h"
 	"close_code.h"
@@ -1219,8 +2102,15 @@
 	"SDL_error.h"
 	"begin_code.h"
 	"close_code.h"
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
 
 1628614477 c:\users\yail\onedrive\assignments\2021_s2\elec-bot\ming_dev_lib\include\sdl2\sdl_log.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
 	"SDL_stdinc.h"
 	"begin_code.h"
 	"close_code.h"
@@ -1230,13 +2120,23 @@
 	"SDL_video.h"
 	"begin_code.h"
 	"close_code.h"
+	"SDL_stdinc.h"
+	"SDL_video.h"
+	"begin_code.h"
+	"close_code.h"
 
 1628614477 c:\users\yail\onedrive\assignments\2021_s2\elec-bot\ming_dev_lib\include\sdl2\sdl_metal.h
 	"SDL_video.h"
 	"begin_code.h"
 	"close_code.h"
+	"SDL_video.h"
+	"begin_code.h"
+	"close_code.h"
 
 1628614477 c:\users\yail\onedrive\assignments\2021_s2\elec-bot\ming_dev_lib\include\sdl2\sdl_power.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
 	"SDL_stdinc.h"
 	"begin_code.h"
 	"close_code.h"
@@ -1247,8 +2147,20 @@
 	"SDL_video.h"
 	"begin_code.h"
 	"close_code.h"
+	"SDL_stdinc.h"
+	"SDL_rect.h"
+	"SDL_video.h"
+	"begin_code.h"
+	"close_code.h"
 
 1628614477 c:\users\yail\onedrive\assignments\2021_s2\elec-bot\ming_dev_lib\include\sdl2\sdl_shape.h
+	"SDL_stdinc.h"
+	"SDL_pixels.h"
+	"SDL_rect.h"
+	"SDL_surface.h"
+	"SDL_video.h"
+	"begin_code.h"
+	"close_code.h"
 	"SDL_stdinc.h"
 	"SDL_pixels.h"
 	"SDL_rect.h"
@@ -1264,8 +2176,18 @@
 	"SDL_video.h"
 	"begin_code.h"
 	"close_code.h"
+	"SDL_stdinc.h"
+	"SDL_keyboard.h"
+	"SDL_render.h"
+	"SDL_video.h"
+	"begin_code.h"
+	"close_code.h"
 
 1628614477 c:\users\yail\onedrive\assignments\2021_s2\elec-bot\ming_dev_lib\include\sdl2\sdl_timer.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"begin_code.h"
@@ -1275,8 +2197,15 @@
 	"SDL_stdinc.h"
 	"begin_code.h"
 	"close_code.h"
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
 
 1628614477 c:\users\yail\onedrive\assignments\2021_s2\elec-bot\ming_dev_lib\include\sdl2\sdl_locale.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"begin_code.h"
@@ -1286,8 +2215,13 @@
 	"SDL_stdinc.h"
 	"begin_code.h"
 	"close_code.h"
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
 
 1634004102 c:\users\yail\onedrive\assignments\2021_s2\elec-bot\ming_dev_lib\sdl2_gfx-1.0.1\sdl2_gfxprimitives.h
+	<math.h>
+	"SDL.h"
 	<math.h>
 	"SDL.h"
 
@@ -1296,14 +2230,21 @@
 	"time.h"
 	"wall.h"
 	"math.h"
+	"formulas.h"
+	"time.h"
+	"wall.h"
+	"math.h"
 
 1634607983 source:c:\users\windows 10\documents\github\elec-bot\src\formulas.c
+	"formulas.h"
 	"formulas.h"
 
 1634610952 c:\users\windows 10\documents\github\elec-bot\src\formulas.h
 	"math.h"
+	"math.h"
 
 1634878701 source:c:\users\windows 10\documents\github\elec-bot\src\robot.c
+	"robot.h"
 	"robot.h"
 
 1634610952 c:\users\windows 10\documents\github\elec-bot\src\robot.h
@@ -1315,8 +2256,25 @@
 	"time.h"
 	"wall.h"
 	"math.h"
+	"stdio.h"
+	"stdlib.h"
+	"sdl.h"
+	"SDL2_gfxPrimitives.h"
+	"formulas.h"
+	"time.h"
+	"wall.h"
+	"math.h"
 
 1634878701 source:c:\users\windows 10\documents\github\elec-bot\src\main.c
+	"stdio.h"
+	"stdlib.h"
+	"sdl.h"
+	<SDL.h>
+	"SDL2_gfxPrimitives.h"
+	"time.h"
+	"formulas.h"
+	"wall.h"
+	"robot.h"
 	"stdio.h"
 	"stdlib.h"
 	"sdl.h"
@@ -1340,8 +2298,24 @@
 	"formulas.h"
 	"wall.h"
 	"robot.h"
+	"stdio.h"
+	"stdlib.h"
+	"sdl.h"
+	"SDL2_gfxPrimitives.h"
+	"stdio.h"
+	"stdlib.h"
+	"sdl.h"
+	"SDL2_gfxPrimitives.h"
+	"time.h"
+	"formulas.h"
+	"wall.h"
+	"robot.h"
 
 1634877957 h"
+	"time.h"
+	"formulas.h"
+	"wall.h"
+	"robot.h"
 	"time.h"
 	"formulas.h"
 	"wall.h"
@@ -1382,8 +2356,45 @@
 	"SDL_misc.h"
 	"begin_code.h"
 	"close_code.h"
+	"SDL_main.h"
+	"SDL_stdinc.h"
+	"SDL_assert.h"
+	"SDL_atomic.h"
+	"SDL_audio.h"
+	"SDL_clipboard.h"
+	"SDL_cpuinfo.h"
+	"SDL_endian.h"
+	"SDL_error.h"
+	"SDL_events.h"
+	"SDL_filesystem.h"
+	"SDL_gamecontroller.h"
+	"SDL_haptic.h"
+	"SDL_hints.h"
+	"SDL_joystick.h"
+	"SDL_loadso.h"
+	"SDL_log.h"
+	"SDL_messagebox.h"
+	"SDL_metal.h"
+	"SDL_mutex.h"
+	"SDL_power.h"
+	"SDL_render.h"
+	"SDL_rwops.h"
+	"SDL_sensor.h"
+	"SDL_shape.h"
+	"SDL_system.h"
+	"SDL_thread.h"
+	"SDL_timer.h"
+	"SDL_version.h"
+	"SDL_video.h"
+	"SDL_locale.h"
+	"SDL_misc.h"
+	"begin_code.h"
+	"close_code.h"
 
 1634610952 c:\users\windows 10\documents\github\elec-bot\ming_dev_lib\include\sdl2\sdl_main.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
 	"SDL_stdinc.h"
 	"begin_code.h"
 	"close_code.h"
@@ -1416,12 +2427,46 @@
 	<sal.h>
 	"begin_code.h"
 	"close_code.h"
+	"SDL_config.h"
+	<sys/types.h>
+	<stdio.h>
+	<stdlib.h>
+	<stddef.h>
+	<stdarg.h>
+	<stdlib.h>
+	<malloc.h>
+	<stddef.h>
+	<stdarg.h>
+	<memory.h>
+	<string.h>
+	<strings.h>
+	<wchar.h>
+	<inttypes.h>
+	<stdint.h>
+	<ctype.h>
+	<math.h>
+	<float.h>
+	<alloca.h>
+	<malloc.h>
+	<malloc.h>
+	<malloc.h>
+	<stdlib.h>
+	<sal.h>
+	"begin_code.h"
+	"close_code.h"
 
 1634610952 c:\users\windows 10\documents\github\elec-bot\ming_dev_lib\include\sdl2\sdl_config.h
 	"SDL_platform.h"
 	<sdkddkver.h>
+	"SDL_platform.h"
+	<sdkddkver.h>
 
 1634610952 c:\users\windows 10\documents\github\elec-bot\ming_dev_lib\include\sdl2\sdl_platform.h
+	"AvailabilityMacros.h"
+	"TargetConditionals.h"
+	<winapifamily.h>
+	"begin_code.h"
+	"close_code.h"
 	"AvailabilityMacros.h"
 	"TargetConditionals.h"
 	<winapifamily.h>
@@ -1437,8 +2482,18 @@
 	"begin_code.h"
 	<signal.h>
 	"close_code.h"
+	"SDL_config.h"
+	"begin_code.h"
+	<signal.h>
+	"close_code.h"
 
 1634610952 c:\users\windows 10\documents\github\elec-bot\ming_dev_lib\include\sdl2\sdl_atomic.h
+	"SDL_stdinc.h"
+	"SDL_platform.h"
+	"begin_code.h"
+	<sys/cpuinline.h>
+	<mbarrier.h>
+	"close_code.h"
 	"SDL_stdinc.h"
 	"SDL_platform.h"
 	"begin_code.h"
@@ -1455,8 +2510,19 @@
 	"SDL_rwops.h"
 	"begin_code.h"
 	"close_code.h"
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_endian.h"
+	"SDL_mutex.h"
+	"SDL_thread.h"
+	"SDL_rwops.h"
+	"begin_code.h"
+	"close_code.h"
 
 1634610952 c:\users\windows 10\documents\github\elec-bot\ming_dev_lib\include\sdl2\sdl_error.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
 	"SDL_stdinc.h"
 	"begin_code.h"
 	"close_code.h"
@@ -1469,8 +2535,19 @@
 	<sys/endian.h>
 	"begin_code.h"
 	"close_code.h"
+	"SDL_stdinc.h"
+	<intrin.h>
+	<endian.h>
+	<endian.h>
+	<sys/endian.h>
+	"begin_code.h"
+	"close_code.h"
 
 1634610952 c:\users\windows 10\documents\github\elec-bot\ming_dev_lib\include\sdl2\sdl_mutex.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"begin_code.h"
@@ -1486,8 +2563,21 @@
 	<stdlib.h>
 	"begin_code.h"
 	"close_code.h"
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_atomic.h"
+	"SDL_mutex.h"
+	<process.h>
+	<process.h>
+	<stdlib.h>
+	"begin_code.h"
+	"close_code.h"
 
 1634610952 c:\users\windows 10\documents\github\elec-bot\ming_dev_lib\include\sdl2\sdl_rwops.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"begin_code.h"
@@ -1497,8 +2587,29 @@
 	"SDL_stdinc.h"
 	"begin_code.h"
 	"close_code.h"
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
 
 1634610952 c:\users\windows 10\documents\github\elec-bot\ming_dev_lib\include\sdl2\sdl_cpuinfo.h
+	"SDL_stdinc.h"
+	<intrin.h>
+	<intrin.h>
+	<arm_neon.h>
+	<altivec.h>
+	<arm_neon.h>
+	<armintr.h>
+	<arm_neon.h>
+	<arm64intr.h>
+	<arm64_neon.h>
+	<mm3dnow.h>
+	<immintrin.h>
+	<mmintrin.h>
+	<xmmintrin.h>
+	<emmintrin.h>
+	<pmmintrin.h>
+	"begin_code.h"
+	"close_code.h"
 	"SDL_stdinc.h"
 	<intrin.h>
 	<intrin.h>
@@ -1531,8 +2642,26 @@
 	"SDL_touch.h"
 	"begin_code.h"
 	"close_code.h"
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_video.h"
+	"SDL_keyboard.h"
+	"SDL_mouse.h"
+	"SDL_joystick.h"
+	"SDL_gamecontroller.h"
+	"SDL_quit.h"
+	"SDL_gesture.h"
+	"SDL_touch.h"
+	"begin_code.h"
+	"close_code.h"
 
 1634610952 c:\users\windows 10\documents\github\elec-bot\ming_dev_lib\include\sdl2\sdl_video.h
+	"SDL_stdinc.h"
+	"SDL_pixels.h"
+	"SDL_rect.h"
+	"SDL_surface.h"
+	"begin_code.h"
+	"close_code.h"
 	"SDL_stdinc.h"
 	"SDL_pixels.h"
 	"SDL_rect.h"
@@ -1545,8 +2674,18 @@
 	"SDL_endian.h"
 	"begin_code.h"
 	"close_code.h"
+	"SDL_stdinc.h"
+	"SDL_endian.h"
+	"begin_code.h"
+	"close_code.h"
 
 1634610952 c:\users\windows 10\documents\github\elec-bot\ming_dev_lib\include\sdl2\sdl_rect.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_pixels.h"
+	"SDL_rwops.h"
+	"begin_code.h"
+	"close_code.h"
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"SDL_pixels.h"
@@ -1562,8 +2701,17 @@
 	"SDL_rwops.h"
 	"begin_code.h"
 	"close_code.h"
+	"SDL_stdinc.h"
+	"SDL_pixels.h"
+	"SDL_rect.h"
+	"SDL_blendmode.h"
+	"SDL_rwops.h"
+	"begin_code.h"
+	"close_code.h"
 
 1634610952 c:\users\windows 10\documents\github\elec-bot\ming_dev_lib\include\sdl2\sdl_blendmode.h
+	"begin_code.h"
+	"close_code.h"
 	"begin_code.h"
 	"close_code.h"
 
@@ -1574,12 +2722,21 @@
 	"SDL_video.h"
 	"begin_code.h"
 	"close_code.h"
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_keycode.h"
+	"SDL_video.h"
+	"begin_code.h"
+	"close_code.h"
 
 1634610952 c:\users\windows 10\documents\github\elec-bot\ming_dev_lib\include\sdl2\sdl_keycode.h
 	"SDL_stdinc.h"
 	"SDL_scancode.h"
+	"SDL_stdinc.h"
+	"SDL_scancode.h"
 
 1634610952 c:\users\windows 10\documents\github\elec-bot\ming_dev_lib\include\sdl2\sdl_scancode.h
+	"SDL_stdinc.h"
 	"SDL_stdinc.h"
 
 1634610952 c:\users\windows 10\documents\github\elec-bot\ming_dev_lib\include\sdl2\sdl_mouse.h
@@ -1588,8 +2745,17 @@
 	"SDL_video.h"
 	"begin_code.h"
 	"close_code.h"
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_video.h"
+	"begin_code.h"
+	"close_code.h"
 
 1634610952 c:\users\windows 10\documents\github\elec-bot\ming_dev_lib\include\sdl2\sdl_joystick.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"begin_code.h"
@@ -1603,8 +2769,19 @@
 	"SDL_joystick.h"
 	"begin_code.h"
 	"close_code.h"
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_rwops.h"
+	"SDL_sensor.h"
+	"SDL_joystick.h"
+	"begin_code.h"
+	"close_code.h"
 
 1634610952 c:\users\windows 10\documents\github\elec-bot\ming_dev_lib\include\sdl2\sdl_sensor.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"begin_code.h"
@@ -1613,8 +2790,16 @@
 1634610952 c:\users\windows 10\documents\github\elec-bot\ming_dev_lib\include\sdl2\sdl_quit.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
+	"SDL_stdinc.h"
+	"SDL_error.h"
 
 1634610952 c:\users\windows 10\documents\github\elec-bot\ming_dev_lib\include\sdl2\sdl_gesture.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_video.h"
+	"SDL_touch.h"
+	"begin_code.h"
+	"close_code.h"
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"SDL_video.h"
@@ -1628,8 +2813,16 @@
 	"SDL_video.h"
 	"begin_code.h"
 	"close_code.h"
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_video.h"
+	"begin_code.h"
+	"close_code.h"
 
 1634610952 c:\users\windows 10\documents\github\elec-bot\ming_dev_lib\include\sdl2\sdl_filesystem.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
 	"SDL_stdinc.h"
 	"begin_code.h"
 	"close_code.h"
@@ -1640,8 +2833,16 @@
 	"SDL_joystick.h"
 	"begin_code.h"
 	"close_code.h"
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_joystick.h"
+	"begin_code.h"
+	"close_code.h"
 
 1634610952 c:\users\windows 10\documents\github\elec-bot\ming_dev_lib\include\sdl2\sdl_hints.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
 	"SDL_stdinc.h"
 	"begin_code.h"
 	"close_code.h"
@@ -1651,8 +2852,15 @@
 	"SDL_error.h"
 	"begin_code.h"
 	"close_code.h"
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
 
 1634610952 c:\users\windows 10\documents\github\elec-bot\ming_dev_lib\include\sdl2\sdl_log.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
 	"SDL_stdinc.h"
 	"begin_code.h"
 	"close_code.h"
@@ -1662,13 +2870,23 @@
 	"SDL_video.h"
 	"begin_code.h"
 	"close_code.h"
+	"SDL_stdinc.h"
+	"SDL_video.h"
+	"begin_code.h"
+	"close_code.h"
 
 1634610952 c:\users\windows 10\documents\github\elec-bot\ming_dev_lib\include\sdl2\sdl_metal.h
 	"SDL_video.h"
 	"begin_code.h"
 	"close_code.h"
+	"SDL_video.h"
+	"begin_code.h"
+	"close_code.h"
 
 1634610952 c:\users\windows 10\documents\github\elec-bot\ming_dev_lib\include\sdl2\sdl_power.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
 	"SDL_stdinc.h"
 	"begin_code.h"
 	"close_code.h"
@@ -1679,8 +2897,20 @@
 	"SDL_video.h"
 	"begin_code.h"
 	"close_code.h"
+	"SDL_stdinc.h"
+	"SDL_rect.h"
+	"SDL_video.h"
+	"begin_code.h"
+	"close_code.h"
 
 1634610952 c:\users\windows 10\documents\github\elec-bot\ming_dev_lib\include\sdl2\sdl_shape.h
+	"SDL_stdinc.h"
+	"SDL_pixels.h"
+	"SDL_rect.h"
+	"SDL_surface.h"
+	"SDL_video.h"
+	"begin_code.h"
+	"close_code.h"
 	"SDL_stdinc.h"
 	"SDL_pixels.h"
 	"SDL_rect.h"
@@ -1696,8 +2926,18 @@
 	"SDL_video.h"
 	"begin_code.h"
 	"close_code.h"
+	"SDL_stdinc.h"
+	"SDL_keyboard.h"
+	"SDL_render.h"
+	"SDL_video.h"
+	"begin_code.h"
+	"close_code.h"
 
 1634610952 c:\users\windows 10\documents\github\elec-bot\ming_dev_lib\include\sdl2\sdl_timer.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"begin_code.h"
@@ -1707,8 +2947,15 @@
 	"SDL_stdinc.h"
 	"begin_code.h"
 	"close_code.h"
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
 
 1634610952 c:\users\windows 10\documents\github\elec-bot\ming_dev_lib\include\sdl2\sdl_locale.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"begin_code.h"
@@ -1718,12 +2965,22 @@
 	"SDL_stdinc.h"
 	"begin_code.h"
 	"close_code.h"
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
 
 1634610952 c:\users\windows 10\documents\github\elec-bot\ming_dev_lib\sdl2_gfx-1.0.1\sdl2_gfxprimitives.h
 	<math.h>
 	"SDL.h"
+	<math.h>
+	"SDL.h"
 
 1634610952 c:\users\windows 10\documents\github\elec-bot\src\wall.h
+	"stdio.h"
+	"stdlib.h"
+	"sdl.h"
+	"SDL2_gfxPrimitives.h"
+	"structures.h"
 	"stdio.h"
 	"stdlib.h"
 	"sdl.h"
@@ -1734,16 +2991,19 @@
 
 1634878701 source:c:\users\windows 10\documents\github\elec-bot\src\wall.c
 	"wall.h"
+	"wall.h"
 
 1634799902 
 
 1634610298 source:c:\users\vishn\documents\github\elec-bot\src\formulas.c
 	"formulas.h"
+	"formulas.h"
 
 1634610298 c:\users\vishn\documents\github\elec-bot\src\formulas.h
 	"math.h"
+	"math.h"
 
-1635585470 source:c:\users\vishn\documents\github\elec-bot\src\main.c
+1636270151 source:c:\users\vishn\documents\github\elec-bot\src\main.c
 	"stdio.h"
 	"stdlib.h"
 	"sdl.h"
@@ -1788,8 +3048,45 @@
 	"SDL_misc.h"
 	"begin_code.h"
 	"close_code.h"
+	"SDL_main.h"
+	"SDL_stdinc.h"
+	"SDL_assert.h"
+	"SDL_atomic.h"
+	"SDL_audio.h"
+	"SDL_clipboard.h"
+	"SDL_cpuinfo.h"
+	"SDL_endian.h"
+	"SDL_error.h"
+	"SDL_events.h"
+	"SDL_filesystem.h"
+	"SDL_gamecontroller.h"
+	"SDL_haptic.h"
+	"SDL_hints.h"
+	"SDL_joystick.h"
+	"SDL_loadso.h"
+	"SDL_log.h"
+	"SDL_messagebox.h"
+	"SDL_metal.h"
+	"SDL_mutex.h"
+	"SDL_power.h"
+	"SDL_render.h"
+	"SDL_rwops.h"
+	"SDL_sensor.h"
+	"SDL_shape.h"
+	"SDL_system.h"
+	"SDL_thread.h"
+	"SDL_timer.h"
+	"SDL_version.h"
+	"SDL_video.h"
+	"SDL_locale.h"
+	"SDL_misc.h"
+	"begin_code.h"
+	"close_code.h"
 
 1634610911 c:\users\vishn\documents\github\elec-bot\ming_dev_lib\include\sdl2\sdl_main.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
 	"SDL_stdinc.h"
 	"begin_code.h"
 	"close_code.h"
@@ -1822,12 +3119,46 @@
 	<sal.h>
 	"begin_code.h"
 	"close_code.h"
+	"SDL_config.h"
+	<sys/types.h>
+	<stdio.h>
+	<stdlib.h>
+	<stddef.h>
+	<stdarg.h>
+	<stdlib.h>
+	<malloc.h>
+	<stddef.h>
+	<stdarg.h>
+	<memory.h>
+	<string.h>
+	<strings.h>
+	<wchar.h>
+	<inttypes.h>
+	<stdint.h>
+	<ctype.h>
+	<math.h>
+	<float.h>
+	<alloca.h>
+	<malloc.h>
+	<malloc.h>
+	<malloc.h>
+	<stdlib.h>
+	<sal.h>
+	"begin_code.h"
+	"close_code.h"
 
 1634610911 c:\users\vishn\documents\github\elec-bot\ming_dev_lib\include\sdl2\sdl_config.h
 	"SDL_platform.h"
 	<sdkddkver.h>
+	"SDL_platform.h"
+	<sdkddkver.h>
 
 1634610912 c:\users\vishn\documents\github\elec-bot\ming_dev_lib\include\sdl2\sdl_platform.h
+	"AvailabilityMacros.h"
+	"TargetConditionals.h"
+	<winapifamily.h>
+	"begin_code.h"
+	"close_code.h"
 	"AvailabilityMacros.h"
 	"TargetConditionals.h"
 	<winapifamily.h>
@@ -1843,8 +3174,18 @@
 	"begin_code.h"
 	<signal.h>
 	"close_code.h"
+	"SDL_config.h"
+	"begin_code.h"
+	<signal.h>
+	"close_code.h"
 
 1634610911 c:\users\vishn\documents\github\elec-bot\ming_dev_lib\include\sdl2\sdl_atomic.h
+	"SDL_stdinc.h"
+	"SDL_platform.h"
+	"begin_code.h"
+	<sys/cpuinline.h>
+	<mbarrier.h>
+	"close_code.h"
 	"SDL_stdinc.h"
 	"SDL_platform.h"
 	"begin_code.h"
@@ -1861,8 +3202,19 @@
 	"SDL_rwops.h"
 	"begin_code.h"
 	"close_code.h"
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_endian.h"
+	"SDL_mutex.h"
+	"SDL_thread.h"
+	"SDL_rwops.h"
+	"begin_code.h"
+	"close_code.h"
 
 1634610911 c:\users\vishn\documents\github\elec-bot\ming_dev_lib\include\sdl2\sdl_error.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
 	"SDL_stdinc.h"
 	"begin_code.h"
 	"close_code.h"
@@ -1875,8 +3227,19 @@
 	<sys/endian.h>
 	"begin_code.h"
 	"close_code.h"
+	"SDL_stdinc.h"
+	<intrin.h>
+	<endian.h>
+	<endian.h>
+	<sys/endian.h>
+	"begin_code.h"
+	"close_code.h"
 
 1634610911 c:\users\vishn\documents\github\elec-bot\ming_dev_lib\include\sdl2\sdl_mutex.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"begin_code.h"
@@ -1892,8 +3255,21 @@
 	<stdlib.h>
 	"begin_code.h"
 	"close_code.h"
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_atomic.h"
+	"SDL_mutex.h"
+	<process.h>
+	<process.h>
+	<stdlib.h>
+	"begin_code.h"
+	"close_code.h"
 
 1634610912 c:\users\vishn\documents\github\elec-bot\ming_dev_lib\include\sdl2\sdl_rwops.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"begin_code.h"
@@ -1903,8 +3279,29 @@
 	"SDL_stdinc.h"
 	"begin_code.h"
 	"close_code.h"
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
 
 1634610911 c:\users\vishn\documents\github\elec-bot\ming_dev_lib\include\sdl2\sdl_cpuinfo.h
+	"SDL_stdinc.h"
+	<intrin.h>
+	<intrin.h>
+	<arm_neon.h>
+	<altivec.h>
+	<arm_neon.h>
+	<armintr.h>
+	<arm_neon.h>
+	<arm64intr.h>
+	<arm64_neon.h>
+	<mm3dnow.h>
+	<immintrin.h>
+	<mmintrin.h>
+	<xmmintrin.h>
+	<emmintrin.h>
+	<pmmintrin.h>
+	"begin_code.h"
+	"close_code.h"
 	"SDL_stdinc.h"
 	<intrin.h>
 	<intrin.h>
@@ -1937,8 +3334,26 @@
 	"SDL_touch.h"
 	"begin_code.h"
 	"close_code.h"
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_video.h"
+	"SDL_keyboard.h"
+	"SDL_mouse.h"
+	"SDL_joystick.h"
+	"SDL_gamecontroller.h"
+	"SDL_quit.h"
+	"SDL_gesture.h"
+	"SDL_touch.h"
+	"begin_code.h"
+	"close_code.h"
 
 1634610912 c:\users\vishn\documents\github\elec-bot\ming_dev_lib\include\sdl2\sdl_video.h
+	"SDL_stdinc.h"
+	"SDL_pixels.h"
+	"SDL_rect.h"
+	"SDL_surface.h"
+	"begin_code.h"
+	"close_code.h"
 	"SDL_stdinc.h"
 	"SDL_pixels.h"
 	"SDL_rect.h"
@@ -1951,8 +3366,18 @@
 	"SDL_endian.h"
 	"begin_code.h"
 	"close_code.h"
+	"SDL_stdinc.h"
+	"SDL_endian.h"
+	"begin_code.h"
+	"close_code.h"
 
 1634610912 c:\users\vishn\documents\github\elec-bot\ming_dev_lib\include\sdl2\sdl_rect.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_pixels.h"
+	"SDL_rwops.h"
+	"begin_code.h"
+	"close_code.h"
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"SDL_pixels.h"
@@ -1968,8 +3393,17 @@
 	"SDL_rwops.h"
 	"begin_code.h"
 	"close_code.h"
+	"SDL_stdinc.h"
+	"SDL_pixels.h"
+	"SDL_rect.h"
+	"SDL_blendmode.h"
+	"SDL_rwops.h"
+	"begin_code.h"
+	"close_code.h"
 
 1634610911 c:\users\vishn\documents\github\elec-bot\ming_dev_lib\include\sdl2\sdl_blendmode.h
+	"begin_code.h"
+	"close_code.h"
 	"begin_code.h"
 	"close_code.h"
 
@@ -1980,12 +3414,21 @@
 	"SDL_video.h"
 	"begin_code.h"
 	"close_code.h"
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_keycode.h"
+	"SDL_video.h"
+	"begin_code.h"
+	"close_code.h"
 
 1634610911 c:\users\vishn\documents\github\elec-bot\ming_dev_lib\include\sdl2\sdl_keycode.h
 	"SDL_stdinc.h"
 	"SDL_scancode.h"
+	"SDL_stdinc.h"
+	"SDL_scancode.h"
 
 1634610912 c:\users\vishn\documents\github\elec-bot\ming_dev_lib\include\sdl2\sdl_scancode.h
+	"SDL_stdinc.h"
 	"SDL_stdinc.h"
 
 1634610911 c:\users\vishn\documents\github\elec-bot\ming_dev_lib\include\sdl2\sdl_mouse.h
@@ -1994,8 +3437,17 @@
 	"SDL_video.h"
 	"begin_code.h"
 	"close_code.h"
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_video.h"
+	"begin_code.h"
+	"close_code.h"
 
 1634610911 c:\users\vishn\documents\github\elec-bot\ming_dev_lib\include\sdl2\sdl_joystick.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"begin_code.h"
@@ -2009,8 +3461,19 @@
 	"SDL_joystick.h"
 	"begin_code.h"
 	"close_code.h"
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_rwops.h"
+	"SDL_sensor.h"
+	"SDL_joystick.h"
+	"begin_code.h"
+	"close_code.h"
 
 1634610912 c:\users\vishn\documents\github\elec-bot\ming_dev_lib\include\sdl2\sdl_sensor.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"begin_code.h"
@@ -2019,8 +3482,16 @@
 1634610912 c:\users\vishn\documents\github\elec-bot\ming_dev_lib\include\sdl2\sdl_quit.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
+	"SDL_stdinc.h"
+	"SDL_error.h"
 
 1634610911 c:\users\vishn\documents\github\elec-bot\ming_dev_lib\include\sdl2\sdl_gesture.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_video.h"
+	"SDL_touch.h"
+	"begin_code.h"
+	"close_code.h"
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"SDL_video.h"
@@ -2034,8 +3505,16 @@
 	"SDL_video.h"
 	"begin_code.h"
 	"close_code.h"
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_video.h"
+	"begin_code.h"
+	"close_code.h"
 
 1634610911 c:\users\vishn\documents\github\elec-bot\ming_dev_lib\include\sdl2\sdl_filesystem.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
 	"SDL_stdinc.h"
 	"begin_code.h"
 	"close_code.h"
@@ -2046,8 +3525,16 @@
 	"SDL_joystick.h"
 	"begin_code.h"
 	"close_code.h"
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_joystick.h"
+	"begin_code.h"
+	"close_code.h"
 
 1634610911 c:\users\vishn\documents\github\elec-bot\ming_dev_lib\include\sdl2\sdl_hints.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
 	"SDL_stdinc.h"
 	"begin_code.h"
 	"close_code.h"
@@ -2057,8 +3544,15 @@
 	"SDL_error.h"
 	"begin_code.h"
 	"close_code.h"
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
 
 1634610911 c:\users\vishn\documents\github\elec-bot\ming_dev_lib\include\sdl2\sdl_log.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
 	"SDL_stdinc.h"
 	"begin_code.h"
 	"close_code.h"
@@ -2068,13 +3562,23 @@
 	"SDL_video.h"
 	"begin_code.h"
 	"close_code.h"
+	"SDL_stdinc.h"
+	"SDL_video.h"
+	"begin_code.h"
+	"close_code.h"
 
 1634610911 c:\users\vishn\documents\github\elec-bot\ming_dev_lib\include\sdl2\sdl_metal.h
 	"SDL_video.h"
 	"begin_code.h"
 	"close_code.h"
+	"SDL_video.h"
+	"begin_code.h"
+	"close_code.h"
 
 1634610912 c:\users\vishn\documents\github\elec-bot\ming_dev_lib\include\sdl2\sdl_power.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
 	"SDL_stdinc.h"
 	"begin_code.h"
 	"close_code.h"
@@ -2085,8 +3589,20 @@
 	"SDL_video.h"
 	"begin_code.h"
 	"close_code.h"
+	"SDL_stdinc.h"
+	"SDL_rect.h"
+	"SDL_video.h"
+	"begin_code.h"
+	"close_code.h"
 
 1634610912 c:\users\vishn\documents\github\elec-bot\ming_dev_lib\include\sdl2\sdl_shape.h
+	"SDL_stdinc.h"
+	"SDL_pixels.h"
+	"SDL_rect.h"
+	"SDL_surface.h"
+	"SDL_video.h"
+	"begin_code.h"
+	"close_code.h"
 	"SDL_stdinc.h"
 	"SDL_pixels.h"
 	"SDL_rect.h"
@@ -2102,8 +3618,18 @@
 	"SDL_video.h"
 	"begin_code.h"
 	"close_code.h"
+	"SDL_stdinc.h"
+	"SDL_keyboard.h"
+	"SDL_render.h"
+	"SDL_video.h"
+	"begin_code.h"
+	"close_code.h"
 
 1634610912 c:\users\vishn\documents\github\elec-bot\ming_dev_lib\include\sdl2\sdl_timer.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"begin_code.h"
@@ -2113,8 +3639,15 @@
 	"SDL_stdinc.h"
 	"begin_code.h"
 	"close_code.h"
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
 
 1634610911 c:\users\vishn\documents\github\elec-bot\ming_dev_lib\include\sdl2\sdl_locale.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"begin_code.h"
@@ -2124,8 +3657,13 @@
 	"SDL_stdinc.h"
 	"begin_code.h"
 	"close_code.h"
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
 
 1634610911 c:\users\vishn\documents\github\elec-bot\ming_dev_lib\sdl2_gfx-1.0.1\sdl2_gfxprimitives.h
+	<math.h>
+	"SDL.h"
 	<math.h>
 	"SDL.h"
 
@@ -2135,10 +3673,15 @@
 	"sdl.h"
 	"SDL2_gfxPrimitives.h"
 	"structures.h"
+	"stdio.h"
+	"stdlib.h"
+	"sdl.h"
+	"SDL2_gfxPrimitives.h"
+	"structures.h"
 
-1635831120 c:\users\vishn\documents\github\elec-bot\src\structures.h
+1636274226 c:\users\vishn\documents\github\elec-bot\src\structures.h
 
-1635585282 c:\users\vishn\documents\github\elec-bot\src\robot.h
+1636270327 c:\users\vishn\documents\github\elec-bot\src\robot.h
 	"stdio.h"
 	"stdlib.h"
 	"sdl.h"
@@ -2148,11 +3691,15 @@
 	"wall.h"
 	"math.h"
 
-1635831502 source:c:\users\vishn\documents\github\elec-bot\src\robot.c
+1636274894 source:c:\users\vishn\documents\github\elec-bot\src\robot.c
 	"robot.h"
 	"stdio.h"
+	"stdlib.h"
+	"stdbool.h"
 
 1635508915 source:c:\users\vishn\documents\github\elec-bot\src\wall.c
+	"wall.h"
+	"wall.h"
 	"wall.h"
 	"wall.h"
 

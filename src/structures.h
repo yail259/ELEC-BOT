@@ -14,11 +14,15 @@
 
 #define WALL_WIDTH 10
 
-#define DEFAULT_ANGLE_CHANGE 15
+#define DEFAULT_ANGLE_CHANGE 1
 #define DEFAULT_SPEED_CHANGE 1
 #define MAX_ROBOT_SPEED 25
 #define PI 3.14159265
 #define SENSOR_VISION 400
+
+#define FUTURE_NODE_NO 7
+
+typedef struct NodeNetwork *node;
 
 struct Wall {
     int x,y;
@@ -44,6 +48,14 @@ struct Robot {
     int degreeMaxChange;
     int robotMap[360][2];
     int maxDistance;
+    int turnAngle;
+    node head;
+};
+
+struct NodeNetwork
+{
+    int x, y;
+    struct Node *nextNode;
 };
 
 /*struct Coordinate
