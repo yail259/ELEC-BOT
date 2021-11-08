@@ -6,10 +6,10 @@
 typedef struct NodeNetwork *node;
 
 void setup_robot(struct Robot *robot){
-    robot->x = 0;
-    robot->y = 380;
-    robot->true_x = 0;
-    robot->true_y = 380;
+    robot->x = 170;
+    robot->y = 460;
+    robot->true_x = 170;
+    robot->true_y = 460;
     robot->width = ROBOT_WIDTH;
     robot->height = ROBOT_HEIGHT;
     robot->direction = 0;
@@ -25,6 +25,7 @@ void setup_robot(struct Robot *robot){
     robot->collisionWait = 0;
 
     robot->moving = false;
+    robot->foundGoal = false;
 
     robot->head = createNode();
     node firstNode = addNode(robot->head, robot->x, robot->y);
@@ -296,26 +297,6 @@ void internalMap(struct SDL_Renderer * renderer, struct Robot * robot)
             SDL_RenderFillRect(renderer, &rect);
         }
     }
-    /*
-    for (int j=0; j<360; j++)
-    {
-        if (robot->vision[j] != 0) {
-            int x_cor = (sin((robot->angle + j+180) * PI/180) * robot->vision[j]) + robot->x;
-            int y_cor = -(cos((robot->angle + j+180) * PI/180) * robot->vision[j]) + robot->y;
-
-            // main PRINT printf("(%d, %d)", j, robot->vision[j]);
-
-            robot->robotMap[j][0] = x_cor;
-            robot->robotMap[j][1] = y_cor;
-
-            printf("(%d, %d)", robot->robotMap[j][0], robot->robotMap[j][1]);
-
-            SDL_Rect rect = {x_cor, y_cor, 10, 10};
-            SDL_SetRenderDrawColor(renderer, 255, 255, 255, 69);
-            SDL_RenderDrawRect(renderer, &rect);
-            SDL_RenderFillRect(renderer, &rect);
-        }
-    }*/
 }
 
 node createNode()
@@ -369,22 +350,6 @@ void drawNode(struct SDL_Renderer * renderer, node thisNode)
     SDL_RenderFillRect(renderer, &rect);
 }
 
-/*
-void printList(node currentNode)
-{
-    //struct node ptr = head;
-
-    printf("I'M HERE");
-
-    for (int i=0; i<FUTURE_NODE_NO; i++) {
-        node possiblePath = currentNode->nextNode[i];
-        if (currentNode->nextNode[i] != NULL) {
-            printf("(%d, %d)", possiblePath->x, possiblePath->y);
-        }
-    }
-
-    // exit(0);
-}*/
 
 void detectFutureNode(struct Robot * robot)
 {
@@ -656,7 +621,7 @@ void robotAutoMotorMove(struct Robot * robot, struct SDL_Renderer * renderer) {
 
             robot->turnAngle = 360;
 
-            deadEndMove(robot, prevNode);
+            //deadEndMove(robot, prevNode);
         }
         else
         {
