@@ -6,9 +6,9 @@
 typedef struct NodeNetwork *node;
 
 void setup_robot(struct Robot *robot){
-    robot->x = OVERALL_WINDOW_WIDTH/2-50;
+    robot->x = OVERALL_WINDOW_WIDTH/6 + -70;
     robot->y = OVERALL_WINDOW_HEIGHT-50;
-    robot->true_x = OVERALL_WINDOW_WIDTH/2-50;
+    robot->true_x = OVERALL_WINDOW_WIDTH/6 - 70;
     robot->true_y = OVERALL_WINDOW_HEIGHT-50;
     robot->width = ROBOT_WIDTH;
     robot->height = ROBOT_HEIGHT;
@@ -375,7 +375,7 @@ void detectFutureNode(struct Robot * robot)
 {
     //printf("DETECT WORKS %d", robot->x);
     int SCAN_RESOLUTION = 45;
-    int DISTANCE_FROM_WALL = 30;
+    int DISTANCE_FROM_WALL = 15;
 
 
     node currentNode = robot->currentNode;
@@ -479,17 +479,25 @@ void robotAutoMotorMove(struct Robot * robot, struct SDL_Renderer * renderer) {
             robot->distanceLeft = sqrt((destination->x - robot->x)*(destination->x - robot->x) +
                                        (destination->y - robot->y)*(destination->y - robot->y));
             //printf("DISTANCE LEFT %d", robot->distanceLeft);
-            if (robot->distanceLeft < 50) {
+            /*
+            if (robot->distanceLeft < 5) {
+                if (robot->currentSpeed>0) {
+                    robot->direction = DOWN;
+                } else {
+                    robot->moving = false;
+                }
+            }*/
+            if (robot->distanceLeft > robot->distanceTotal/2)
+                robot->direction = UP;
+            else
+            {
                 if (robot->currentSpeed>0) {
                     robot->direction = DOWN;
                 } else {
                     robot->moving = false;
                 }
             }
-            else if (robot->distanceLeft > robot->distanceTotal/2)
-                robot->direction = UP;
-            else
-                robot->direction = DOWN;
+
         }
     }
     else
