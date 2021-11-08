@@ -20,12 +20,19 @@ void setup_robot(struct Robot *robot){
     robot->degreeMaxChange = 1;
     robot->maxDistance = 0;
     robot->turnAngle = 0;
+    robot->distanceTotal = 0;
+    robot->distanceLeft = 0;
 
-    robot->head = createNode();
-    node firstNode = addNode(robot->head, robot->x, robot->y);
+    robot->moving = false;
+
+    robot->currentNode = createNode();
+    node firstNode = addNode(robot->currentNode, robot->x, robot->y, 0);
+
+    robot->currentNode = firstNode;
 
     printf("Press arrow keys to move manually, or enter to move automatically\n\n");
 }
+
 int robot_off_screen(struct Robot * robot){
     if(robot->x < 0 || robot-> y < 0){
         return 0;
@@ -114,9 +121,9 @@ int checkRobotSensorFrontRightAllWalls(struct Robot * robot, struct Wall_collect
             //+(ROBOT_WIDTH/2-2)*cos((robot->angle + j)*PI/180)
             //+(ROBOT_WIDTH/2-2)*sin((robot->angle + j)*PI/180)
             xDir = round(robotCentreX-
-                         (-ROBOT_HEIGHT/2-SENSOR_VISION+sensorSensitivityLength*i)*sin((robot->angle + j)*PI/180));
+                         (-ROBOT_HEIGHT/2-SENSOR_VISION+sensorSensitivityLength*i)*sin((robot->angle + j + 180)*PI/180));
             yDir = round(robotCentreY+
-                         (-ROBOT_HEIGHT/2-SENSOR_VISION+sensorSensitivityLength*i)*cos((robot->angle + j)*PI/180));
+                         (-ROBOT_HEIGHT/2-SENSOR_VISION+sensorSensitivityLength*i)*cos((robot->angle + j + 180)*PI/180));
             /*xDir = round(robotCentreX + i * sin((robot->angle + j)*PI/180));
             yDir = round(robotCentreY + i * cos((robot->angle + j)*PI/180));*/
             xTL = (int) xDir;
@@ -150,6 +157,7 @@ int checkRobotSensorFrontRightAllWalls(struct Robot * robot, struct Wall_collect
             robot->maxDistance = robot->vision[j];
             //printf("%d", robot->maxDistance);
         }
+        // printf("(%d, %d)", j, robot->vision[j]);
     }
     //exit(0);
     return score;
@@ -233,116 +241,6 @@ void robotUpdate(struct SDL_Renderer * renderer, struct Robot * robot){
     }
 }
 
-void internalMap(struct SDL_Renderer * renderer, struct Robot * robot)
-{
-    for (int j=0; j<360; j++)
-    {
-
-        if (robot->vision[j] != 0) {
-            int x_cor = (sin((robot->angle + j) * PI/180) * robot->vision[j]) + robot->x;
-            int y_cor = -(cos((robot->angle + j) * PI/180) * robot->vision[j]) + robot->y;
-
-            // main PRINT printf("(%d, %d)", j, robot->vision[j]);
-
-            robot->robotMap[j][0] = x_cor;
-            robot->robotMap[j][1] = y_cor;
-
-            //printf("(%d, %d)", robot->robotMap[j][0], robot->robotMap[j][1]);
-
-            SDL_Rect rect = {x_cor, y_cor, 10, 10};
-            SDL_SetRenderDrawColor(renderer, 255, 255, 255, 69);
-            SDL_RenderDrawRect(renderer, &rect);
-            SDL_RenderFillRect(renderer, &rect);
-        }
-    }
-
-    for(int l=0; l < 360; l++)
-    {
-        if(robot->vision[(l+360-180)%180] != 0 && robot->vision[l] != 0)
-        {
-            int opposite_x = robot->robotMap[(-l+360)%360][0];
-            int opposite_y = robot->robotMap[(-l+360)%360][1];
-
-            int x_mod = robot->robotMap[l][0];
-            int y_mod = robot->robotMap[l][1];
-
-            if(opposite_x != x_mod && opposite_y != y_mod && l > 245 && l < 295)
-            {
-                int avg_x = (opposite_x + x_mod)/2;
-                int avg_y = (opposite_y + y_mod)/2;
-
-                /*SDL_Rect rect = {avg_x, avg_y, 10, 10};
-                SDL_SetRenderDrawColor(renderer, 255, 165, 0, 69);
-                SDL_RenderDrawRect(renderer, &rect);
-                SDL_RenderFillRect(renderer, &rect);*/
-
-                //printf("OPP(%d, %d)", opposite_x, opposite_y);
-            }
-        }
-    }
-
-    //exit(0);
-}
-
-node createNode()
-{
-    node tempNode;
-
-    tempNode = (node)malloc(sizeof(struct NodeNetwork));
-
-    tempNode->nextNode = NULL;
-
-    return tempNode;
-}
-
-node addNode(node head, int newX, int newY)
-{
-    node tempNode, p;
-
-    tempNode = createNode();
-
-    tempNode->x = newX;
-    tempNode->y = newY;
-
-    if(head == NULL)
-    {
-        head = tempNode;
-    }
-    else
-    {
-        p = head;
-
-        while(p->nextNode != NULL)
-        {
-            p = p->nextNode;
-        }
-
-        p->nextNode = tempNode;
-    }
-
-    return tempNode;
-}
-
-void drawNode(struct Robot * robot, struct SDL_Renderer * renderer, node head)
-{
-    while(head != NULL)
-    {
-        //printf("(%d, %d)", head->x, head->y);
-        SDL_Rect rect = {head->x, head->y, 10, 10};
-        SDL_SetRenderDrawColor(renderer, 255, 165, 0, 69);
-        SDL_RenderDrawRect(renderer, &rect);
-        SDL_RenderFillRect(renderer, &rect);
-        head = head->nextNode;
-    }
-    moveToNode(robot, head);
-
-    //exit(0);
-    //struct Node valueThisNode = *robot->thisNode;
-    //int valueThisNodeX = valueThisNode->x;
-
-    //printf("YOU ROBOT (%d, %d)", valueThisNode->x, valueThisNode->y);
-}
-
 void robotMotorMove(struct Robot * robot) {
     double x_offset, y_offset;
     switch(robot->direction){
@@ -377,77 +275,171 @@ void robotMotorMove(struct Robot * robot) {
     robot->y = (int) y_offset;
 }
 
-void printList(node head)
+void internalMap(struct SDL_Renderer * renderer, struct Robot * robot)
+{
+    for (int j=0; j<360; j++)
+    {
+
+        if (robot->vision[j] != 0) {
+            int x_cor = (sin((robot->angle + j+180) * PI/180) * robot->vision[j]) + robot->x;
+            int y_cor = -(cos((robot->angle + j+180) * PI/180) * robot->vision[j]) + robot->y;
+
+            // main PRINT printf("(%d, %d)", j, robot->vision[j]);
+
+            robot->robotMap[j][0] = x_cor;
+            robot->robotMap[j][1] = y_cor;
+
+            //printf("(%d, %d)", robot->robotMap[j][0], robot->robotMap[j][1]);
+
+            SDL_Rect rect = {x_cor, y_cor, 10, 10};
+            SDL_SetRenderDrawColor(renderer, 255, 255, 255, 69);
+            SDL_RenderDrawRect(renderer, &rect);
+            SDL_RenderFillRect(renderer, &rect);
+        }
+    }
+
+    //exit(0);
+}
+
+node createNode()
+{
+    node tempNode;
+
+    tempNode = (node)malloc(sizeof(struct NodeNetwork));
+
+    for (int i=0; i<FUTURE_NODE_NO; i++) {
+        tempNode->nextNode[i] = NULL;
+        tempNode->anglesToRobot[i] = NULL;
+    }
+
+    tempNode->x = NULL;
+    tempNode->y = NULL;
+    tempNode->prevNode = NULL;
+    tempNode->deadEnd = false;
+    tempNode->scanned = false;
+
+    return tempNode;
+}
+
+node addNode(node currentNode, int newX, int newY, int angle)
+{
+    node tempNode;
+
+    tempNode = createNode();
+
+    tempNode->x = newX;
+    tempNode->y = newY;
+    tempNode->prevNode = currentNode;
+
+    // printf("(%d, %d)", newX, newY);
+
+    for (int i=0; i<FUTURE_NODE_NO; i++) {
+        if (currentNode->nextNode[i] == NULL) {
+            currentNode->nextNode[i] = tempNode;
+            currentNode->anglesToRobot[i] = angle;
+            node possiblePath = currentNode->nextNode[i];
+            printf("ADDNODE (%d, %d, %d)", i, possiblePath->x, possiblePath->y);
+            break;
+        }
+    }
+    return tempNode;
+}
+
+void drawNode(struct SDL_Renderer * renderer, node thisNode)
+{
+    // printf("DRAWNODE (%d, %d)", thisNode->x, thisNode->y);
+    SDL_Rect rect = {thisNode->x, thisNode->y, 10, 10};
+    SDL_SetRenderDrawColor(renderer, 255, 165, 0, 69);
+    SDL_RenderDrawRect(renderer, &rect);
+    SDL_RenderFillRect(renderer, &rect);
+}
+
+/*
+void printList(node currentNode)
 {
     //struct node ptr = head;
 
     printf("I'M HERE");
 
-    while(head != NULL)
-    {
-        printf("(%d, %d)", head->x, head->y);
-        head = head->nextNode;
+    for (int i=0; i<FUTURE_NODE_NO; i++) {
+        node possiblePath = currentNode->nextNode[i];
+        if (currentNode->nextNode[i] != NULL) {
+            printf("(%d, %d)", possiblePath->x, possiblePath->y);
+        }
     }
 
     // exit(0);
-}
+}*/
 
 void detectFutureNode(struct Robot * robot)
 {
-    printf("DETECT WORKS %d", robot->x);
+    //printf("DETECT WORKS %d", robot->x);
+    int SCAN_RESOLUTION = 45;
+    int DISTANCE_FROM_WALL = 30;
 
-    int ADJUSTMENT_DEGREE = 5;
-    for(int j = 1; j < 359; j++)
+
+    node currentNode = robot->currentNode;
+    currentNode->scanned = true;
+
+    for(int j = 45; j < 359 - SCAN_RESOLUTION; j+=SCAN_RESOLUTION)
     {
-        bool increasing;
-
-        if(robot->vision[j+1] >= robot->vision[j])
+        if(robot->vision[j] > 100)
         {
-            increasing = true;
+            printf("%d", j);
+            int xNewNode = robot->x + (robot->vision[j] - DISTANCE_FROM_WALL) * sin((robot->angle + (j) + 180) * PI/180);
+            int yNewNode = robot->y - (robot->vision[j] - DISTANCE_FROM_WALL) * cos((robot->angle + (j) + 180) * PI/180);
+
+            node newNode = addNode(robot->currentNode, xNewNode, yNewNode, j);
         }
+    }
 
-        if(increasing && robot->vision[j+1] < robot->vision[j])
-        {
-            if(robot->vision[j - 1] < robot->vision[j])
-            {
-                if(robot->vision[j] > 100)
-                {
-                    int xNewNode = robot->x + (robot->vision[j] - 80) * sin((robot->angle +
-                                                   (j - ADJUSTMENT_DEGREE)) * PI/180);
-                    int yNewNode = robot->y - (robot->vision[j] - 80) * cos((robot->angle +
-                                                   (j - ADJUSTMENT_DEGREE)) * PI/180);
-
-                    node genericNode = addNode(robot->head, xNewNode, yNewNode);
-                    increasing = false;
-                }
-            }
+    for (int i=0; i<FUTURE_NODE_NO; i++) {
+        node possiblePath = currentNode->nextNode[i];
+        if (possiblePath != NULL) {
+            printf("DETECTNODE PATHS");
+            printf("(%d, %d)", possiblePath->x, possiblePath->y);
+            node prevNode = possiblePath->prevNode;
+            printf("PREVIOUS (%d, %d)", prevNode->x, prevNode->y);
         }
     }
 }
 
-void moveToNode(struct Robot * robot, node targetNode)
-{
-    //printf("%d JUSTX", robot->x);
-    int deltaX = targetNode->x - robot->x;
-    int deltaY = targetNode->y - robot->y;
-    //printf("%d DELTA", deltaX);
-    double angle = atan((deltaY)/(deltaX)) * 180 / PI;
-    int angleDegree = (int) angle;
-    //printf("ANGLE %d", angleDegree);
+//Check deadEnd
+bool checkDeadEnd(node currentNode) {
+    bool deadEnd = true;
 
-    robot->turnAngle = 0;
-
-    if(deltaX > 0)
-    {
-        robot->turnAngle = 90 + angleDegree;
-    }
-    else
-    {
-        robot->turnAngle = -90 + angleDegree;
+    for (int i=0; i<FUTURE_NODE_NO; i++) {
+        node possiblePath = currentNode->nextNode[i];
+        if (possiblePath != NULL && !possiblePath->deadEnd) {
+            deadEnd = false;
+        }
     }
 
-    printf("ANGLE %d", robot->turnAngle);
+    if (deadEnd) {
+        currentNode->deadEnd = true;
+    }
+
+    return deadEnd;
 }
+
+
+void moveToNode(struct Robot * robot, node possiblePath, int angle) {
+    node currentNode = robot->currentNode;
+
+    robot->turnAngle = angle;
+    printf("TURNANGLE %d \n", robot->turnAngle);
+
+    int deltaX = possiblePath->x - robot->x;
+    int deltaY = possiblePath->y - robot->y;
+
+    robot->distanceTotal = sqrt(deltaX*deltaX + deltaY*deltaY);
+    printf("\n DELTA %d %d DISTANCETOTAL %d", deltaX, deltaY, robot->distanceTotal);
+
+    robot->moving = true;
+    robot->currentNode = possiblePath;
+}
+
+
 
 void robotAutoMotorMove(struct Robot * robot, struct SDL_Renderer * renderer) {
 
@@ -457,25 +449,79 @@ void robotAutoMotorMove(struct Robot * robot, struct SDL_Renderer * renderer) {
     node thirdNode = addNode(robot->head, 18, 69);
     */
 
+    /*
     for (int j=0; j<360; j++) {
-
+        if (robot->vision[j] == 0) {
+            if (j < 180) {
+                //robot->direction = LEFT;
+            } else if (j > 180) {
+                robot->direction = RIGHT;
+            } else {
+                robot->direction = UP;
+            }
+        }
     }
+    */
 
-    if (robot->turnAngle > 0)
+
+    if (robot->moving) {
+        if (robot->turnAngle > 8)
+        {
+            robot->direction = RIGHT;
+            robot->turnAngle-=15;
+        }
+        else if (robot->turnAngle < -8) {
+            robot->direction = LEFT;
+            robot->turnAngle+=15;
+        }
+        else {
+            node destination = robot->currentNode;
+            robot->distanceLeft = sqrt((destination->x - robot->x)*(destination->x - robot->x) +
+                                       (destination->y - robot->y)*(destination->y - robot->y));
+            //printf("DISTANCE LEFT %d", robot->distanceLeft);
+            if (robot->distanceLeft < 50) {
+                if (robot->currentSpeed>0) {
+                    robot->direction = DOWN;
+                } else {
+                    robot->moving = false;
+                }
+            }
+            else if (robot->distanceLeft > robot->distanceTotal/2)
+                robot->direction = UP;
+            else
+                robot->direction = DOWN;
+        }
+    }
+    else
     {
-        robot->direction = RIGHT;
-        robot->turnAngle--;
+        if (!robot->currentNode->scanned)
+            detectFutureNode(robot);
+
+        node currentNode = robot->currentNode;
+
+        checkDeadEnd(currentNode);
+
+        if (currentNode->deadEnd)
+        {
+            printf("\n DEADEND \n");
+
+            node prevNode = currentNode->prevNode;
+            moveToNode(robot, prevNode, -180);
+        }
+        else
+        {
+            for (int i=0; i<FUTURE_NODE_NO; i++)
+            {
+                node possiblePath = currentNode->nextNode[i];
+                if (possiblePath != NULL && !possiblePath->deadEnd)
+                {
+                    drawNode(renderer, possiblePath);
+
+                    printf("\n NEWPATH \n");
+                    moveToNode(robot, possiblePath, (currentNode->anglesToRobot[i] - 180));
+                }
+            }
+        }
+
     }
-    else if (robot->turnAngle < 0) {
-        robot->direction = LEFT;
-        robot->turnAngle++;
-    }
-
-
-
-    detectFutureNode(robot);
-
-    printList(robot->head);
-
-    drawNode(robot, renderer, robot->head);
 }

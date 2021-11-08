@@ -29,14 +29,20 @@ int checkRobotSensorFrontLeftAllWalls(struct Robot * robot, struct Wall_collecti
 
 //Pointers and Nodes
 node createNode();
-node addNode(node head, int newX, int newY);
+node addNode(node head, int newX, int newY, int angle);
 
 //detecting possible paths
 void detectFutureNode(struct Robot * robot);
 
+//Move to possible path
+// void moveToNode(struct Robot * robot, node possiblePath, int pathNo)
+
+//Check deadEnd
+bool checkDeadEnd(node currentNode);
+
 
 //Drawing Node
-void drawNode(struct Robot * robot, struct SDL_Renderer * renderer, node head);
+void drawNode(struct SDL_Renderer * renderer, node head);
 
 
 //Visual Display

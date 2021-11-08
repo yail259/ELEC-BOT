@@ -5,10 +5,12 @@
 		<Option title="ELEC1601 Bot" />
 		<Option pch_mode="2" />
 		<Option compiler="gcc" />
+		<Option virtualFolders="src/" />
 		<Build>
 			<Target title="Debug">
-				<Option output="bin/Debug/ELEC1601 Bot" prefix_auto="1" extension_auto="1" />
-				<Option object_output="obj/Debug/" />
+				<Option output="bin/Debug/ELEC1601 Bot.exe" prefix_auto="1" extension_auto="0" />
+				<Option working_dir="bin/Debug" />
+				<Option object_output="bin/Debug" />
 				<Option type="1" />
 				<Option compiler="gcc" />
 				<Compiler>
@@ -43,22 +45,10 @@
 			<Add option="-lmingw32 -lSDL2main -lSDL2" />
 			<Add directory="ming_dev_lib/lib" />
 		</Linker>
-		<Unit filename="src/formulas.c">
+		<Unit filename="node.c">
 			<Option compilerVar="CC" />
+			<Option virtualFolder="src/" />
 		</Unit>
-		<Unit filename="src/formulas.h" />
-		<Unit filename="src/main.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="src/robot.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="src/robot.h" />
-		<Unit filename="src/structures.h" />
-		<Unit filename="src/wall.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="src/wall.h" />
 		<Extensions>
 			<lib_finder disable_auto="1" />
 		</Extensions>

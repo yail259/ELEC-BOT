@@ -1513,15 +1513,7 @@
 	"math.h"
 	"math.h"
 
-1633999573 source:c:\users\yail\onedrive\assignments\2021_s2\elec-bot\src\main.c
-	"stdio.h"
-	"stdlib.h"
-	"sdl.h"
-	"SDL2_gfxPrimitives.h"
-	"time.h"
-	"formulas.h"
-	"wall.h"
-	"robot.h"
+1636280210 source:c:\users\yail\onedrive\assignments\2021_s2\elec-bot\src\main.c
 	"stdio.h"
 	"stdlib.h"
 	"sdl.h"
@@ -1543,9 +1535,10 @@
 	"SDL2_gfxPrimitives.h"
 	"structures.h"
 
-1633999574 c:\users\yail\onedrive\assignments\2021_s2\elec-bot\src\structures.h
+1636326363 c:\users\yail\onedrive\assignments\2021_s2\elec-bot\src\structures.h
+	"stdbool.h"
 
-1633999574 c:\users\yail\onedrive\assignments\2021_s2\elec-bot\src\robot.h
+1636327384 c:\users\yail\onedrive\assignments\2021_s2\elec-bot\src\robot.h
 	"stdio.h"
 	"stdlib.h"
 	"sdl.h"
@@ -1554,21 +1547,14 @@
 	"time.h"
 	"wall.h"
 	"math.h"
+
+1636330250 source:c:\users\yail\onedrive\assignments\2021_s2\elec-bot\src\robot.c
+	"robot.h"
 	"stdio.h"
 	"stdlib.h"
-	"sdl.h"
-	"SDL2_gfxPrimitives.h"
-	"formulas.h"
-	"time.h"
-	"wall.h"
-	"math.h"
+	"stdbool.h"
 
-1633999573 source:c:\users\yail\onedrive\assignments\2021_s2\elec-bot\src\robot.c
-	"robot.h"
-	"robot.h"
-
-1633999574 source:c:\users\yail\onedrive\assignments\2021_s2\elec-bot\src\wall.c
-	"wall.h"
+1636280210 source:c:\users\yail\onedrive\assignments\2021_s2\elec-bot\src\wall.c
 	"wall.h"
 
 1628614477 c:\users\yail\onedrive\assignments\2021_s2\elec-bot\ming_dev_lib\include\sdl2\sdl.h
