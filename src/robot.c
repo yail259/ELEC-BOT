@@ -6,9 +6,9 @@
 typedef struct NodeNetwork *node;
 
 void setup_robot(struct Robot *robot){
-    robot->x = 0;
+    robot->x = 620;
     robot->y = 380;
-    robot->true_x = 0;
+    robot->true_x = 620;
     robot->true_y = 380;
     robot->width = ROBOT_WIDTH;
     robot->height = ROBOT_HEIGHT;
