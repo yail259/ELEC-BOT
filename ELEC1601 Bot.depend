@@ -1513,7 +1513,7 @@
 	"math.h"
 	"math.h"
 
-1636330657 source:c:\users\yail\onedrive\assignments\2021_s2\elec-bot\src\main.c
+1636333584 source:c:\users\yail\onedrive\assignments\2021_s2\elec-bot\src\main.c
 	"stdio.h"
 	"stdlib.h"
 	"sdl.h"
@@ -1535,7 +1535,7 @@
 	"SDL2_gfxPrimitives.h"
 	"structures.h"
 
-1636326363 c:\users\yail\onedrive\assignments\2021_s2\elec-bot\src\structures.h
+1636335580 c:\users\yail\onedrive\assignments\2021_s2\elec-bot\src\structures.h
 	"stdbool.h"
 
 1636327384 c:\users\yail\onedrive\assignments\2021_s2\elec-bot\src\robot.h
@@ -1548,7 +1548,7 @@
 	"wall.h"
 	"math.h"
 
-1636331262 source:c:\users\yail\onedrive\assignments\2021_s2\elec-bot\src\robot.c
+1636336187 source:c:\users\yail\onedrive\assignments\2021_s2\elec-bot\src\robot.c
 	"robot.h"
 	"stdio.h"
 	"stdlib.h"

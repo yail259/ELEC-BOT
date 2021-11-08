@@ -6,9 +6,9 @@
 typedef struct NodeNetwork *node;
 
 void setup_robot(struct Robot *robot){
-    robot->x = OVERALL_WINDOW_WIDTH/6 + -70;
+    robot->x = OVERALL_WINDOW_WIDTH/2-50;
     robot->y = OVERALL_WINDOW_HEIGHT-50;
-    robot->true_x = OVERALL_WINDOW_WIDTH/6 - 70;
+    robot->true_x = OVERALL_WINDOW_WIDTH/2-50;
     robot->true_y = OVERALL_WINDOW_HEIGHT-50;
     robot->width = ROBOT_WIDTH;
     robot->height = ROBOT_HEIGHT;
@@ -224,7 +224,18 @@ void robotUpdate(struct SDL_Renderer * renderer, struct Robot * robot){
     int j;
     for (j = 0; j < 360; j++)
     {
-        for (i = 0; i < SENSOR_VISION; i++)
+        if (robot->vision[j] != 0)
+        {
+           SDL_Rect rect = {robot->robotMap[j][0], robot->robotMap[j][1], 10, 10};
+            SDL_SetRenderDrawColor(renderer, 0, 255, 0, 255);
+            SDL_RenderDrawRect(renderer, &rect);
+            SDL_RenderFillRect(renderer, &rect);
+        }
+
+
+
+        /*
+        for (i = 0; i < robot->vision[j]; i++)
         {
             xDir = round(robotCentreX+(ROBOT_WIDTH/2-2)*cos((robot->angle + j)*PI/180)-
                          (-ROBOT_HEIGHT/2-SENSOR_VISION+sensor_sensitivity*i)*sin((robot->angle + j)*PI/180));
@@ -238,6 +249,7 @@ void robotUpdate(struct SDL_Renderer * renderer, struct Robot * robot){
             SDL_RenderDrawRect(renderer, &rect);
             SDL_RenderFillRect(renderer, &rect);
         }
+        */
     }
 }
 
@@ -375,7 +387,7 @@ void detectFutureNode(struct Robot * robot)
 {
     //printf("DETECT WORKS %d", robot->x);
     int SCAN_RESOLUTION = 45;
-    int DISTANCE_FROM_WALL = 15;
+    int DISTANCE_FROM_WALL = 25;
 
 
     node currentNode = robot->currentNode;
@@ -514,7 +526,31 @@ void robotAutoMotorMove(struct Robot * robot, struct SDL_Renderer * renderer) {
             printf("\n DEADEND \n");
 
             node prevNode = currentNode->prevNode;
-            moveToNode(robot, prevNode, -180);
+
+            int turnAngle = 0;
+            bool lastDeadEnd = true;
+
+
+            for (int i=0; i<FUTURE_NODE_NO; i++)
+            {
+                node pathFromPrevNode = prevNode->nextNode[i];
+                node futurePath = currentNode->nextNode[i];
+
+                if (currentNode == pathFromPrevNode)
+                {
+                    turnAngle = 180 - currentNode->anglesToRobot[i];
+                }
+                if (futurePath != NULL)
+                {
+                    lastDeadEnd = false;
+                }
+            }
+
+            if (lastDeadEnd) {
+                turnAngle = -180;
+            }
+
+            moveToNode(robot, prevNode, turnAngle);
         }
         else
         {
