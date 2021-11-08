@@ -29,7 +29,7 @@ int checkRobotSensorFrontLeftAllWalls(struct Robot * robot, struct Wall_collecti
 
 //Pointers and Nodes
 node createNode();
-node addNode(node head, int newX, int newY, int angle);
+node addNode(node head, int newX, int newY);
 
 //detecting possible paths
 void detectFutureNode(struct Robot * robot);

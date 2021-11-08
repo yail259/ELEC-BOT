@@ -6,10 +6,10 @@
 typedef struct NodeNetwork *node;
 
 void setup_robot(struct Robot *robot){
-    robot->x = OVERALL_WINDOW_WIDTH/2-50;
-    robot->y = OVERALL_WINDOW_HEIGHT-50;
-    robot->true_x = OVERALL_WINDOW_WIDTH/2-50;
-    robot->true_y = OVERALL_WINDOW_HEIGHT-50;
+    robot->x = 640-10-270;
+    robot->y = 460;
+    robot->true_x = 640-10-270;
+    robot->true_y = 460;
     robot->width = ROBOT_WIDTH;
     robot->height = ROBOT_HEIGHT;
     robot->direction = 0;
@@ -22,11 +22,12 @@ void setup_robot(struct Robot *robot){
     robot->turnAngle = 0;
     robot->distanceTotal = 0;
     robot->distanceLeft = 0;
+    robot->collisionWait = 0;
 
     robot->moving = false;
 
-    robot->currentNode = createNode();
-    node firstNode = addNode(robot->currentNode, robot->x, robot->y, 0);
+    robot->head = createNode();
+    node firstNode = addNode(robot->head, robot->x, robot->y);
 
     robot->currentNode = firstNode;
 
@@ -104,30 +105,29 @@ int checkRobotSensorFrontRightAllWalls(struct Robot * robot, struct Wall_collect
     int robotCentreX, robotCentreY, xTL, yTL;
     int score, hit;
 
-    int sensorSensitivityLength =  floor(SENSOR_VISION/SENSOR_VISION);
+    int sensorSensitivityLength =  1;
 
     head_store = head;
     robotCentreX = robot->x + ROBOT_WIDTH/2;
     robotCentreY = robot->y + ROBOT_HEIGHT/2;
     score = 0;
 
-    for (j = 0; j < 360; j++)
+
+    for (j = 0; j < 360 - 15 ; j+=15)
     {
-        robot->vision[j] = 0;
+        robot->vision[j] = 999999;
 
         for (i = 0; i < SENSOR_VISION - 10; i++)
         {
             ptr = head_store;
-            //+(ROBOT_WIDTH/2-2)*cos((robot->angle + j)*PI/180)
-            //+(ROBOT_WIDTH/2-2)*sin((robot->angle + j)*PI/180)
-            xDir = round(robotCentreX-
-                         (-ROBOT_HEIGHT/2-SENSOR_VISION+sensorSensitivityLength*i)*sin((robot->angle + j + 180)*PI/180));
-            yDir = round(robotCentreY+
-                         (-ROBOT_HEIGHT/2-SENSOR_VISION+sensorSensitivityLength*i)*cos((robot->angle + j + 180)*PI/180));
-            /*xDir = round(robotCentreX + i * sin((robot->angle + j)*PI/180));
-            yDir = round(robotCentreY + i * cos((robot->angle + j)*PI/180));*/
+
+            xDir = round(robotCentreX-(-SENSOR_VISION+sensorSensitivityLength*i)*sin((robot->angle + j + 180)*PI/180));
+            yDir = round(robotCentreY+(-SENSOR_VISION+sensorSensitivityLength*i)*cos((robot->angle + j + 180)*PI/180));
+
             xTL = (int) xDir;
             yTL = (int) yDir;
+
+            //printf("(%d, %d)", xTL, yTL);
             hit = 0;
 
             while(ptr != NULL) {
@@ -140,26 +140,11 @@ int checkRobotSensorFrontRightAllWalls(struct Robot * robot, struct Wall_collect
                 robot->vision[j] = score;
             }
         }
-        if (j > 2 && robot->vision[j - 1] != 0 && robot->vision[j] != 0)
-        {
-            int newChange = abs(score - robot->vision[j-1]);
-            int maxChange = abs(robot->vision[robot->degreeMaxChange] - robot->vision[robot->degreeMaxChange-1]);
-            //printf("(%d %d)", newChange,maxChange);
-            if (newChange > maxChange)
-            {
-                robot->degreeMaxChange = j;
-                // printf("(%d, %d)", robot->degreeMaxChange, j);
-            }
-        }
-
-        if (robot->vision[j] >= robot->maxDistance)
-        {
-            robot->maxDistance = robot->vision[j];
-            //printf("%d", robot->maxDistance);
-        }
+        //exit(0);
         // printf("(%d, %d)", j, robot->vision[j]);
     }
-    //exit(0);
+
+
     return score;
 }
 
@@ -222,7 +207,8 @@ void robotUpdate(struct SDL_Renderer * renderer, struct Robot * robot){
     int sensor_sensitivity =  floor(SENSOR_VISION/SENSOR_VISION);
     int i;
     int j;
-    for (j = 0; j < 360; j++)
+    /*
+    for (j = 0; j < 349; j+=10)
     {
         if (robot->vision[j] != 0)
         {
@@ -230,7 +216,7 @@ void robotUpdate(struct SDL_Renderer * renderer, struct Robot * robot){
             SDL_SetRenderDrawColor(renderer, 0, 255, 0, 255);
             SDL_RenderDrawRect(renderer, &rect);
             SDL_RenderFillRect(renderer, &rect);
-        }
+        }    */
 
 
 
@@ -250,7 +236,7 @@ void robotUpdate(struct SDL_Renderer * renderer, struct Robot * robot){
             SDL_RenderFillRect(renderer, &rect);
         }
         */
-    }
+
 }
 
 void robotMotorMove(struct Robot * robot) {
@@ -289,9 +275,29 @@ void robotMotorMove(struct Robot * robot) {
 
 void internalMap(struct SDL_Renderer * renderer, struct Robot * robot)
 {
+
+    for (int j=0; j<360 - SCAN_RESOLUTION; j+=SCAN_RESOLUTION)
+    {
+        if (robot->vision[j] != 999999) {
+            int x_cor = (sin((robot->angle + j+180) * PI/180) * robot->vision[j]) + robot->x;
+            int y_cor = -(cos((robot->angle + j+180) * PI/180) * robot->vision[j]) + robot->y;
+
+            // main PRINT printf("(%d, %d)", j, robot->vision[j]);
+
+            robot->robotMap[j][0] = x_cor;
+            robot->robotMap[j][1] = y_cor;
+
+            // printf("(%d, %d)", robot->robotMap[j][0], robot->robotMap[j][1]);
+
+            SDL_Rect rect = {x_cor, y_cor, 10, 10};
+            SDL_SetRenderDrawColor(renderer, 255, 255, 255, 69);
+            SDL_RenderDrawRect(renderer, &rect);
+            SDL_RenderFillRect(renderer, &rect);
+        }
+    }
+    /*
     for (int j=0; j<360; j++)
     {
-
         if (robot->vision[j] != 0) {
             int x_cor = (sin((robot->angle + j+180) * PI/180) * robot->vision[j]) + robot->x;
             int y_cor = -(cos((robot->angle + j+180) * PI/180) * robot->vision[j]) + robot->y;
@@ -301,16 +307,14 @@ void internalMap(struct SDL_Renderer * renderer, struct Robot * robot)
             robot->robotMap[j][0] = x_cor;
             robot->robotMap[j][1] = y_cor;
 
-            //printf("(%d, %d)", robot->robotMap[j][0], robot->robotMap[j][1]);
+            printf("(%d, %d)", robot->robotMap[j][0], robot->robotMap[j][1]);
 
             SDL_Rect rect = {x_cor, y_cor, 10, 10};
             SDL_SetRenderDrawColor(renderer, 255, 255, 255, 69);
             SDL_RenderDrawRect(renderer, &rect);
             SDL_RenderFillRect(renderer, &rect);
         }
-    }
-
-    //exit(0);
+    }*/
 }
 
 node createNode()
@@ -321,7 +325,6 @@ node createNode()
 
     for (int i=0; i<FUTURE_NODE_NO; i++) {
         tempNode->nextNode[i] = NULL;
-        tempNode->anglesToRobot[i] = NULL;
     }
 
     tempNode->x = NULL;
@@ -333,7 +336,7 @@ node createNode()
     return tempNode;
 }
 
-node addNode(node currentNode, int newX, int newY, int angle)
+node addNode(node currentNode, int newX, int newY)
 {
     node tempNode;
 
@@ -348,9 +351,8 @@ node addNode(node currentNode, int newX, int newY, int angle)
     for (int i=0; i<FUTURE_NODE_NO; i++) {
         if (currentNode->nextNode[i] == NULL) {
             currentNode->nextNode[i] = tempNode;
-            currentNode->anglesToRobot[i] = angle;
             node possiblePath = currentNode->nextNode[i];
-            printf("ADDNODE (%d, %d, %d)", i, possiblePath->x, possiblePath->y);
+            //printf("ADDNODE (%d, %d, %d)", i, possiblePath->x, possiblePath->y);
             break;
         }
     }
@@ -386,32 +388,30 @@ void printList(node currentNode)
 void detectFutureNode(struct Robot * robot)
 {
     //printf("DETECT WORKS %d", robot->x);
-    int SCAN_RESOLUTION = 45;
-    int DISTANCE_FROM_WALL = 25;
 
 
     node currentNode = robot->currentNode;
     currentNode->scanned = true;
 
-    for(int j = 45; j < 359 - SCAN_RESOLUTION; j+=SCAN_RESOLUTION)
+    for(int j = SCAN_RESOLUTION; j < 359 - SCAN_RESOLUTION; j+=SCAN_RESOLUTION)
     {
-        if(robot->vision[j] > 100)
+        if(robot->vision[j] > DISTANCE_THRESHOLD)
         {
-            printf("%d", j);
+            //printf("%d", j);
             int xNewNode = robot->x + (robot->vision[j] - DISTANCE_FROM_WALL) * sin((robot->angle + (j) + 180) * PI/180);
             int yNewNode = robot->y - (robot->vision[j] - DISTANCE_FROM_WALL) * cos((robot->angle + (j) + 180) * PI/180);
 
-            node newNode = addNode(robot->currentNode, xNewNode, yNewNode, j);
+            node newNode = addNode(robot->currentNode, xNewNode, yNewNode);
         }
     }
 
     for (int i=0; i<FUTURE_NODE_NO; i++) {
         node possiblePath = currentNode->nextNode[i];
         if (possiblePath != NULL) {
-            printf("DETECTNODE PATHS");
-            printf("(%d, %d)", possiblePath->x, possiblePath->y);
+            //printf("DETECTNODE PATHS");
+            //printf("(%d, %d)", possiblePath->x, possiblePath->y);
             node prevNode = possiblePath->prevNode;
-            printf("PREVIOUS (%d, %d)", prevNode->x, prevNode->y);
+            //printf("PREVIOUS (%d, %d)", prevNode->x, prevNode->y);
         }
     }
 }
@@ -435,17 +435,61 @@ bool checkDeadEnd(node currentNode) {
 }
 
 
-void moveToNode(struct Robot * robot, node possiblePath, int angle) {
+void moveToNode(struct Robot * robot, node possiblePath) {
     node currentNode = robot->currentNode;
 
-    robot->turnAngle = angle;
-    printf("TURNANGLE %d \n", robot->turnAngle);
+    //printf("%d JUSTX", robot->x);
+    double deltaX = possiblePath->x - robot->x;
+    double deltaY = possiblePath->y - robot->y;
+    //printf("%d DELTA", deltaX);
+    double angle = atan((deltaY)/(deltaX)) * 180 / PI;
+    int angleDegree = (int) angle;
+    //printf("ANGLE %d", angleDegree);
 
-    int deltaX = possiblePath->x - robot->x;
-    int deltaY = possiblePath->y - robot->y;
+    int adjustmentAngle = 180 - robot->angle;
+
+    robot->turnAngle = 0;
+
+    if(deltaX > 0)
+    {
+        robot->turnAngle = 90 + angleDegree + 360 - robot->angle;
+    }
+    else if (deltaX < 0)
+    {
+        robot->turnAngle = 270 + angleDegree - robot->angle;
+    }
+    else if (deltaX == 0)
+    {
+        if (deltaY > 0)
+        {
+            robot->turnAngle = adjustmentAngle;
+        }
+        else
+        {
+            robot->turnAngle = -robot->angle;
+        }
+    }
+
+    if (robot->turnAngle > 180)
+        robot->turnAngle = (robot->turnAngle - 360);
+
+    /*
+    int minDist = 20;
+    if (robot->vision[robot->turnAngle+180 + 15] < minDist)
+    {
+        robot->turnAngle -= 15;
+    }
+    else if (robot->vision[robot->turnAngle+180 - 15] < minDist)
+    {
+        robot->turnAngle += 15;
+    }
+    */
+
+    //printf("TURNANGLE %d \n", robot->turnAngle);
+
 
     robot->distanceTotal = sqrt(deltaX*deltaX + deltaY*deltaY);
-    printf("\n DELTA %d %d DISTANCETOTAL %d", deltaX, deltaY, robot->distanceTotal);
+    //printf("\n DELTA %f %f DISTANCETOTAL %d", deltaX, deltaY, robot->distanceTotal);
 
     robot->moving = true;
     robot->currentNode = possiblePath;
@@ -460,20 +504,21 @@ void robotAutoMotorMove(struct Robot * robot, struct SDL_Renderer * renderer) {
     node secondNode = addNode(robot->head, 45, 23);
     node thirdNode = addNode(robot->head, 18, 69);
     */
-
-    /*
-    for (int j=0; j<360; j++) {
-        if (robot->vision[j] == 0) {
-            if (j < 180) {
-                //robot->direction = LEFT;
-            } else if (j > 180) {
-                robot->direction = RIGHT;
-            } else {
-                robot->direction = UP;
-            }
-        }
+    if (robot->foundGoal) {
+        //printf("FOUND GOAL SHOULD BE MOVING!!!");
+        robot->direction = UP;
+        return;
     }
-    */
+
+    int depth = 0;
+    node ptr = robot->currentNode;
+    while (ptr != NULL)
+    {
+        depth += 1;
+        ptr = ptr->prevNode;
+    }
+
+    //printf("NODE DEPTH (%d) \n", depth);
 
 
     if (robot->moving) {
@@ -487,18 +532,37 @@ void robotAutoMotorMove(struct Robot * robot, struct SDL_Renderer * renderer) {
             robot->turnAngle+=15;
         }
         else {
+            /*
+            if (depth > 5)
+            {
+                printf("RROBOT COLLISION WAIT %d", robot->collisionWait);
+                node currentNode = robot->currentNode;
+                if (!currentNode->deadEnd)
+                {
+                    printf("check for collision");
+                    for (int j = 90; j < 270 ; j+=15)
+                    {
+                        if (robot->vision[j] < 12)
+                        {
+                            printf("****** COLLISION INCOMING!!! SEARCH FOR NEW NODE");
+                            robot->moving = false;
+                            robot->collisionWait--;
+                        }
+                    }
+                }
+
+                if (robot->collisionWait > 0)
+                {
+                    printf("****** COLLISION INCOMING!!! SEARCH FOR NEW NODE");
+                    robot->moving = false;
+                    robot->collisionWait--;
+                }
+
+            }*/
             node destination = robot->currentNode;
             robot->distanceLeft = sqrt((destination->x - robot->x)*(destination->x - robot->x) +
                                        (destination->y - robot->y)*(destination->y - robot->y));
-            //printf("DISTANCE LEFT %d", robot->distanceLeft);
-            /*
-            if (robot->distanceLeft < 5) {
-                if (robot->currentSpeed>0) {
-                    robot->direction = DOWN;
-                } else {
-                    robot->moving = false;
-                }
-            }*/
+
             if (robot->distanceLeft > robot->distanceTotal/2)
                 robot->direction = UP;
             else
@@ -514,10 +578,32 @@ void robotAutoMotorMove(struct Robot * robot, struct SDL_Renderer * renderer) {
     }
     else
     {
+        if (depth > 5)
+        {
+            for (int j = 135; j < 224; j+=15)
+            {
+                if (robot->vision[j] == 999999)
+                {
+                    //printf("SEE GOAL AT DEGREE %d", j);
+                    robot->turnAngle = j-180;
+
+
+                    if (robot->turnAngle == 0)
+                        robot->direction = UP;
+                        //robot->moving = false;
+                        robot->foundGoal = true;
+                        //printf("SHOULD BE MOVING UP????");
+                        return;
+                    robot->moving = true;
+                    return;
+                }
+            }
+        }
+        printf("DISTANCE TO RIGHT (%d, %d)", depth, robot->vision[270]);
+        node currentNode = robot->currentNode;
+
         if (!robot->currentNode->scanned)
             detectFutureNode(robot);
-
-        node currentNode = robot->currentNode;
 
         checkDeadEnd(currentNode);
 
@@ -527,30 +613,7 @@ void robotAutoMotorMove(struct Robot * robot, struct SDL_Renderer * renderer) {
 
             node prevNode = currentNode->prevNode;
 
-            int turnAngle = 0;
-            bool lastDeadEnd = true;
-
-
-            for (int i=0; i<FUTURE_NODE_NO; i++)
-            {
-                node pathFromPrevNode = prevNode->nextNode[i];
-                node futurePath = currentNode->nextNode[i];
-
-                if (currentNode == pathFromPrevNode)
-                {
-                    turnAngle = 180 - currentNode->anglesToRobot[i];
-                }
-                if (futurePath != NULL)
-                {
-                    lastDeadEnd = false;
-                }
-            }
-
-            if (lastDeadEnd) {
-                turnAngle = -180;
-            }
-
-            moveToNode(robot, prevNode, turnAngle);
+            moveToNode(robot, prevNode);
         }
         else
         {
@@ -560,9 +623,9 @@ void robotAutoMotorMove(struct Robot * robot, struct SDL_Renderer * renderer) {
                 if (possiblePath != NULL && !possiblePath->deadEnd)
                 {
                     drawNode(renderer, possiblePath);
-
+                    // , (currentNode->anglesToRobot[i] - 180)
                     printf("\n NEWPATH \n");
-                    moveToNode(robot, possiblePath, (currentNode->anglesToRobot[i] - 180));
+                    moveToNode(robot, possiblePath);
                 }
             }
         }

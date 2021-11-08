@@ -22,7 +22,11 @@
 #define PI 3.14159265
 #define SENSOR_VISION 400
 
-#define FUTURE_NODE_NO 7
+#define FUTURE_NODE_NO 5
+
+#define SCAN_RESOLUTION 45
+#define DISTANCE_FROM_WALL 30
+#define DISTANCE_THRESHOLD 100
 
 typedef struct NodeNetwork *node;
 
@@ -53,6 +57,8 @@ struct Robot {
     int turnAngle;
     int distanceTotal;
     int distanceLeft;
+    int collisionWait;
+    bool foundGoal;
     bool moving;
     node head;
     node currentNode;
@@ -61,7 +67,6 @@ struct Robot {
 struct NodeNetwork
 {
     int x, y;
-    int anglesToRobot[FUTURE_NODE_NO];
     struct Node *nextNode[FUTURE_NODE_NO];
     struct Node *prevNode;
     bool deadEnd;
