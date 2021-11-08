@@ -199,44 +199,33 @@ void robotUpdate(struct SDL_Renderer * renderer, struct Robot * robot){
     xTL = (int) xDir;
     yTL = (int) yDir;
 
+
     SDL_RenderDrawLine(renderer,xTR, yTR, xBR, yBR);
     SDL_RenderDrawLine(renderer,xBR, yBR, xBL, yBL);
     SDL_RenderDrawLine(renderer,xBL, yBL, xTL, yTL);
     SDL_RenderDrawLine(renderer,xTL, yTL, xTR, yTR);
 
+    //ARDUINO CAR
+    SDL_Surface *car = SDL_LoadBMP("arduinocar.bmp");
+    SDL_Texture *texture2 = SDL_CreateTextureFromSurface(renderer, car);
+    SDL_Rect dstrect = {robot->x -5, robot->y, 30, 27};
+    SDL_RenderCopyEx(renderer, texture2, NULL, &dstrect, robot->angle, NULL, SDL_FLIP_NONE);
+
     //Front Right Sensor
     int sensor_sensitivity =  floor(SENSOR_VISION/SENSOR_VISION);
     int i;
     int j;
-    /*
-    for (j = 0; j < 349; j+=10)
+
+    for (j = 0; j < 315; j+=45)
     {
         if (robot->vision[j] != 0)
         {
-           SDL_Rect rect = {robot->robotMap[j][0], robot->robotMap[j][1], 10, 10};
+            SDL_Rect rect = {robot->robotMap[j][0], robot->robotMap[j][1], 20, 20};
             SDL_SetRenderDrawColor(renderer, 0, 255, 0, 255);
             SDL_RenderDrawRect(renderer, &rect);
             SDL_RenderFillRect(renderer, &rect);
-        }    */
-
-
-
-        /*
-        for (i = 0; i < robot->vision[j]; i++)
-        {
-            xDir = round(robotCentreX+(ROBOT_WIDTH/2-2)*cos((robot->angle + j)*PI/180)-
-                         (-ROBOT_HEIGHT/2-SENSOR_VISION+sensor_sensitivity*i)*sin((robot->angle + j)*PI/180));
-            yDir = round(robotCentreY+(ROBOT_WIDTH/2-2)*sin((robot->angle + j)*PI/180)+
-                         (-ROBOT_HEIGHT/2-SENSOR_VISION+sensor_sensitivity*i)*cos((robot->angle + j)*PI/180));
-            xTL = (int) xDir;
-            yTL = (int) yDir;
-
-            SDL_Rect rect = {xTL, yTL, 2, sensor_sensitivity};
-            SDL_SetRenderDrawColor(renderer, 80+(20*(SENSOR_VISION-i)), 80+(20*(SENSOR_VISION-i)), 80+(20*(SENSOR_VISION-i)), 255);
-            SDL_RenderDrawRect(renderer, &rect);
-            SDL_RenderFillRect(renderer, &rect);
         }
-        */
+    }
 
 }
 
@@ -296,26 +285,6 @@ void internalMap(struct SDL_Renderer * renderer, struct Robot * robot)
             SDL_RenderFillRect(renderer, &rect);
         }
     }
-    /*
-    for (int j=0; j<360; j++)
-    {
-        if (robot->vision[j] != 0) {
-            int x_cor = (sin((robot->angle + j+180) * PI/180) * robot->vision[j]) + robot->x;
-            int y_cor = -(cos((robot->angle + j+180) * PI/180) * robot->vision[j]) + robot->y;
-
-            // main PRINT printf("(%d, %d)", j, robot->vision[j]);
-
-            robot->robotMap[j][0] = x_cor;
-            robot->robotMap[j][1] = y_cor;
-
-            printf("(%d, %d)", robot->robotMap[j][0], robot->robotMap[j][1]);
-
-            SDL_Rect rect = {x_cor, y_cor, 10, 10};
-            SDL_SetRenderDrawColor(renderer, 255, 255, 255, 69);
-            SDL_RenderDrawRect(renderer, &rect);
-            SDL_RenderFillRect(renderer, &rect);
-        }
-    }*/
 }
 
 node createNode()
@@ -367,6 +336,22 @@ void drawNode(struct SDL_Renderer * renderer, node thisNode)
     SDL_SetRenderDrawColor(renderer, 255, 165, 0, 69);
     SDL_RenderDrawRect(renderer, &rect);
     SDL_RenderFillRect(renderer, &rect);
+}
+
+void drawConnections(struct SDL_Renderer * renderer, node thisNode)
+{
+    for (int i=0; i<FUTURE_NODE_NO; i++) {
+        node futureNode = thisNode->nextNode[i];
+
+        if (futureNode != NULL) {
+            int deltaX = futureNode->x - thisNode->x;
+            int deltaY = futureNode->y - thisNode->y;
+
+            //int distance = sqrt(deltaX*deltaX + deltaY*deltaY);
+
+            SDL_RenderDrawLine(renderer, thisNode->x, thisNode->y, futureNode->x, futureNode->y);
+        }
+    }
 }
 
 /*
@@ -605,7 +590,7 @@ void robotAutoMotorMove(struct Robot * robot, struct SDL_Renderer * renderer) {
             robot->turnAngle-=15;
             if (movingFrom->deadEnd)
             {
-                printf("+++DEADEND SCAN FOR GOAL+++");
+                //printf("+++DEADEND SCAN FOR GOAL+++");
                 checkGoal(robot);
             }
         }
@@ -615,7 +600,7 @@ void robotAutoMotorMove(struct Robot * robot, struct SDL_Renderer * renderer) {
             robot->turnAngle+=15;
             if (movingFrom->deadEnd)
             {
-                printf("+++DEADEND SCAN FOR GOAL+++");
+                //printf("+++DEADEND SCAN FOR GOAL+++");
                 checkGoal(robot);
             }
         }
@@ -645,6 +630,7 @@ void robotAutoMotorMove(struct Robot * robot, struct SDL_Renderer * renderer) {
 
         if (!robot->currentNode->scanned)
             detectFutureNode(robot);
+            drawConnections(renderer, robot->currentNode);
 
         checkDeadEnd(currentNode);
 

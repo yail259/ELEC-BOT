@@ -2,7 +2,8 @@
 #include "stdlib.h"
 #include "sdl.h"
 #include "SDL2_gfxPrimitives.h"
-#include "time.h"
+//#include "time.h"
+#include "sys/time.h"
 
 #include "formulas.h"
 #include "wall.h"
@@ -19,6 +20,40 @@ int main(int argc, char *argv[]) {
         return 1;
     }
 
+    //Welcome Screen
+    SDL_Window * welcome = SDL_CreateWindow("Welcome Screen",
+    SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 640, 480, 0);
+
+    SDL_Renderer *rendererW = SDL_CreateRenderer(welcome, -1, 0);
+
+    SDL_Surface *image = SDL_LoadBMP("startscreen.bmp");
+
+    SDL_Texture *texture = SDL_CreateTextureFromSurface(rendererW, image);
+    SDL_RenderCopy(rendererW, texture, NULL, NULL);
+    SDL_RenderPresent(rendererW);
+
+    SDL_bool start = SDL_FALSE;
+    SDL_Event ev;
+
+    while(start == SDL_FALSE){
+        while(SDL_PollEvent(&ev)){
+            const Uint8 *input = SDL_GetKeyboardState(NULL);
+            if(ev.type == SDL_QUIT){
+                done = 1;
+            }
+            if(input[SDL_SCANCODE_SPACE]){
+
+
+                SDL_DestroyTexture(texture);
+                SDL_FreeSurface(image);
+                SDL_DestroyRenderer(rendererW);
+                SDL_DestroyWindow(welcome);
+
+                start = SDL_TRUE;
+            }
+        }
+    }
+
 
     window = SDL_CreateWindow("Robot Maze", 0, SDL_WINDOWPOS_CENTERED, OVERALL_WINDOW_WIDTH, OVERALL_WINDOW_HEIGHT, SDL_WINDOW_OPENGL);
     renderer = SDL_CreateRenderer(window, -1, 0);
@@ -29,8 +64,11 @@ int main(int argc, char *argv[]) {
     struct Robot robot;
     struct Wall_collection *head = NULL;
     int front_left_sensor, front_right_sensor=0;
-    clock_t start_time, end_time;
-    int msec;
+    //clock_t start_time, end_time;
+    //int msec;
+    struct timeval start_time, end_time;
+    gettimeofday(&start_time, 0);
+    unsigned long msec;
 
     // SETUP MAZE
     // You can create your own maze here. line of code is adding a wall.
@@ -91,8 +129,10 @@ int main(int argc, char *argv[]) {
 
         //Check if robot reaches endpoint. and check sensor values
         if (checkRobotReachedEnd(&robot, 640-10-320, 480, 100, 10)){ //Maze 5){
-            end_time = clock();
-            msec = (end_time-start_time) * 1000 / CLOCKS_PER_SEC;
+            //end_time = clock();
+            //msec = (end_time-start_time) * 1000 / CLOCKS_PER_SEC;
+            gettimeofday(&end_time, 0);
+            msec = ((end_time.tv_sec - start_time.tv_sec)*1000)+(end_time.tv_usec - start_time.tv_usec)/1000;
             robotSuccess(&robot, msec);
         }
         else if(checkRobotHitWalls(&robot, head))
@@ -135,7 +175,8 @@ int main(int argc, char *argv[]) {
             }
             if(state[SDL_SCANCODE_RETURN]){
                 robot.auto_mode = 1;
-                start_time = clock();
+                //start_time = clock();
+                gettimeofday(&start_time, 0);
             }
         }
 
