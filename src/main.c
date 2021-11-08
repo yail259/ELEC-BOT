@@ -113,7 +113,7 @@ int main(int argc, char *argv[]) {
     SDL_Event event;
 
     while(!done){
-        SDL_SetRenderDrawColor(renderer, 200, 200, 200, 255);
+        SDL_SetRenderDrawColor(renderer, 97, 97, 97, 255);
         SDL_RenderClear(renderer);
 
 //        SDL_SetRenderDrawColor(renderer2, 97, 97, 97, 255);
