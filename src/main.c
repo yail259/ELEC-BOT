@@ -69,7 +69,6 @@ int main(int argc, char *argv[]) {
     insertAndSetFirstWall(&head, 2,  640-10-520, 150, 10, 290);
     insertAndSetFirstWall(&head, 2,  640-120-520, 440, 120, 10);
 
-
     setup_robot(&robot);
     updateAllWalls(head, renderer);
 
@@ -91,7 +90,7 @@ int main(int argc, char *argv[]) {
         robotMotorMove(&robot);
 
         //Check if robot reaches endpoint. and check sensor values
-        if (checkRobotReachedEnd(&robot, 0, 340, 10, 100)){ //Maze 5){
+        if (checkRobotReachedEnd(&robot, 640-10-320, 480, 100, 10)){ //Maze 5){
             end_time = clock();
             msec = (end_time-start_time) * 1000 / CLOCKS_PER_SEC;
             robotSuccess(&robot, msec);
